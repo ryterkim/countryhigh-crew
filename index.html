@@ -1,0 +1,533 @@
+<title>Mountain Spirit 2026 · Crew Running Order</title>
+<style>
+  :root {
+    --accent: #da705b;
+    --accent-deep: #b8503c;
+    --accent-soft: #f3ddd5;
+    --beige: #c0a888;
+    --beige-soft: #ece2d3;
+    --ground: #f6f1e9;
+    --surface: #fffdf9;
+    --surface-2: #fbf5ec;
+    --ink: #2a221c;
+    --muted: #7c7066;
+    --faint: #a89c8f;
+    --border: #e7ddce;
+    --border-strong: #d8ccb9;
+    --done-ink: #b3a99c;
+    --now-bg: #fdf1ec;
+    --next-bg: #f6efe1;
+    --shadow: 0 1px 2px rgba(60,45,30,.05), 0 6px 20px rgba(60,45,30,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --accent: #e88872;
+      --accent-deep: #f0a48f;
+      --accent-soft: #3a2620;
+      --beige: #c9b393;
+      --beige-soft: #33291f;
+      --ground: #1a1512;
+      --surface: #241d18;
+      --surface-2: #2c241d;
+      --ink: #f2e9dd;
+      --muted: #b1a394;
+      --faint: #7d7264;
+      --border: #382e25;
+      --border-strong: #4a3d30;
+      --done-ink: #6f6455;
+      --now-bg: #2f211b;
+      --next-bg: #2c2519;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --accent: #e88872; --accent-deep: #f0a48f; --accent-soft: #3a2620;
+    --beige: #c9b393; --beige-soft: #33291f; --ground: #1a1512;
+    --surface: #241d18; --surface-2: #2c241d; --ink: #f2e9dd;
+    --muted: #b1a394; --faint: #7d7264; --border: #382e25;
+    --border-strong: #4a3d30; --done-ink: #6f6455; --now-bg: #2f211b;
+    --next-bg: #2c2519; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.35);
+  }
+  :root[data-theme="light"] {
+    --accent: #da705b; --accent-deep: #b8503c; --accent-soft: #f3ddd5;
+    --beige: #c0a888; --beige-soft: #ece2d3; --ground: #f6f1e9;
+    --surface: #fffdf9; --surface-2: #fbf5ec; --ink: #2a221c;
+    --muted: #7c7066; --faint: #a89c8f; --border: #e7ddce;
+    --border-strong: #d8ccb9; --done-ink: #b3a99c; --now-bg: #fdf1ec;
+    --next-bg: #f6efe1; --shadow: 0 1px 2px rgba(60,45,30,.05), 0 6px 20px rgba(60,45,30,.06);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 0 14px 64px; }
+  .display {
+    font-weight: 800; text-transform: uppercase; letter-spacing: .01em;
+    line-height: .98;
+  }
+  .eyebrow {
+    text-transform: uppercase; letter-spacing: .18em; font-size: 11px;
+    font-weight: 700; color: var(--accent-deep);
+  }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 20; background: var(--ground);
+    border-bottom: 1px solid var(--border); padding-top: 14px;
+  }
+  .brandrow { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .title { font-size: 26px; }
+  .title .sub { display: block; font-size: 12px; letter-spacing: .16em; color: var(--muted); font-weight: 700; margin-top: 4px; }
+  .clockbox { text-align: right; flex-shrink: 0; }
+  .clock { font-size: 30px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+  .clocklabel { font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: var(--faint); font-weight: 700; }
+  .altitude {
+    display: inline-flex; align-items: center; gap: 5px; margin-top: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--beige); border: 1px solid var(--border-strong); border-radius: 999px; padding: 3px 9px;
+  }
+
+  /* Controls */
+  .controls { padding: 12px 0 10px; display: flex; flex-direction: column; gap: 10px; }
+  .daytoggle { display: flex; gap: 6px; }
+  .daytoggle button {
+    flex: 1; border: 1px solid var(--border-strong); background: var(--surface);
+    color: var(--muted); border-radius: 10px; padding: 9px 8px; cursor: pointer;
+    font-size: 13px; font-weight: 700; letter-spacing: .02em; transition: .15s;
+  }
+  .daytoggle button .d2 { display: block; font-size: 11px; font-weight: 600; color: var(--faint); margin-top: 1px; }
+  .daytoggle button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .daytoggle button[aria-pressed="true"] .d2 { color: var(--surface); opacity: .7; }
+
+  .chiprow { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .chiprow::-webkit-scrollbar { display: none; }
+  .chip {
+    flex-shrink: 0; border: 1px solid var(--border-strong); background: var(--surface);
+    color: var(--muted); border-radius: 999px; padding: 6px 13px; cursor: pointer;
+    font-size: 13px; font-weight: 600; white-space: nowrap; transition: .15s;
+  }
+  .chip[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  :root[data-theme="dark"] .chip[aria-pressed="true"], .chip[aria-pressed="true"] { color: #fff; }
+
+  .livebar { display: flex; align-items: center; gap: 10px; }
+  .livebtn {
+    display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--border-strong);
+    background: var(--surface); color: var(--muted); border-radius: 999px; padding: 6px 12px;
+    cursor: pointer; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    flex-shrink: 0; transition: .15s;
+  }
+  .livebtn .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); }
+  .livebtn.on { border-color: var(--accent); color: var(--accent-deep); background: var(--now-bg); }
+  .livebtn.on .dot { background: var(--accent); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+  @media (prefers-reduced-motion: reduce) { .livebtn.on .dot { animation: none; } }
+  input[type=range] { flex: 1; accent-color: var(--accent); height: 22px; }
+  .scrubval { font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--muted); min-width: 40px; text-align: right; }
+
+  .preview-note {
+    display: none; background: var(--next-bg); border: 1px solid var(--border-strong);
+    border-radius: 10px; padding: 8px 12px; font-size: 12px; color: var(--muted); line-height: 1.4;
+  }
+  .preview-note.show { display: block; }
+  .eventday-note {
+    display: none; background: var(--beige-soft); border: 1px solid var(--border-strong);
+    border-radius: 10px; padding: 8px 12px; font-size: 12px; color: var(--muted); line-height: 1.4;
+  }
+  .eventday-note.show { display: block; }
+  .preview-note b { color: var(--ink); }
+
+  /* Hero now/next */
+  .hero { display: flex; flex-direction: column; gap: 10px; margin: 14px 0 8px; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); }
+  .now { border-color: var(--accent); border-width: 1.5px; background: var(--now-bg); padding: 15px 16px; }
+  .now .lbl { color: var(--accent-deep); }
+  .next { padding: 13px 16px; }
+  .next .lbl { color: var(--beige); }
+  .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .16em; font-weight: 800; margin-bottom: 6px; display: flex; align-items: center; gap: 7px; }
+  .lbl .tag { font-variant-numeric: tabular-nums; }
+  .hero-time { font-size: 13px; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .hero-title { font-size: 21px; font-weight: 800; line-height: 1.12; margin: 3px 0 6px; letter-spacing: -.01em; }
+  .now .hero-title { font-size: 24px; }
+  .hero-meta { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 12px; }
+  .hero-meta .who { color: var(--ink); font-weight: 600; }
+  .hero-note { font-size: 12.5px; color: var(--muted); margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--border); }
+  .countdown { font-weight: 800; color: var(--accent-deep); font-variant-numeric: tabular-nums; }
+  .idle { padding: 16px; text-align: center; color: var(--muted); font-size: 14px; }
+
+  /* Timeline */
+  .tl-head { display: flex; align-items: baseline; justify-content: space-between; margin: 20px 2px 8px; }
+  .tl-head h2 { font-size: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; margin: 0; }
+  .tl-head .count { font-size: 12px; color: var(--faint); font-weight: 600; }
+  .timeline { display: flex; flex-direction: column; }
+  .row {
+    display: grid; grid-template-columns: 52px 1fr; gap: 12px; padding: 11px 4px;
+    border-bottom: 1px solid var(--border); position: relative; transition: opacity .2s;
+  }
+  .row:last-child { border-bottom: none; }
+  .row .time { font-size: 14px; font-weight: 800; font-variant-numeric: tabular-nums; color: var(--ink); padding-top: 1px; }
+  .row .body .rt { font-size: 15px; font-weight: 600; line-height: 1.25; }
+  .row .body .meta { font-size: 12.5px; color: var(--muted); margin-top: 2px; display: flex; flex-wrap: wrap; gap: 2px 10px; }
+  .row .body .meta .who { font-weight: 600; color: var(--ink); }
+  .row .body .note { font-size: 12px; color: var(--faint); margin-top: 3px; font-style: italic; }
+  .row .marker { position: absolute; left: -14px; top: 0; bottom: 0; width: 3px; border-radius: 2px; background: transparent; }
+
+  .row.key .rt { font-weight: 800; }
+  .row.key .time { color: var(--accent-deep); }
+  .badge { display: inline-block; font-size: 9.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 2px 6px; border-radius: 5px; vertical-align: 1px; margin-left: 6px; }
+  .badge.key { background: var(--accent-soft); color: var(--accent-deep); }
+  .badge.video { background: var(--beige-soft); color: var(--beige); }
+
+  .row.past { opacity: .42; }
+  .row.past .time, .row.past .rt { color: var(--done-ink); font-weight: 600; }
+  .row.past .check { color: var(--beige); }
+  .row.now-row { background: var(--now-bg); border-radius: 12px; border-bottom-color: transparent; box-shadow: var(--shadow); margin: 2px 0; padding: 13px 12px; }
+  .row.now-row::before { content: "JETZT"; position: absolute; top: -8px; left: 10px; background: var(--accent); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .12em; padding: 2px 8px; border-radius: 5px; }
+  .row.now-row .marker { background: var(--accent); }
+  .row.dim { opacity: .3; }
+  .row.mine .marker { background: var(--accent); }
+
+  .empty { text-align: center; color: var(--muted); padding: 30px 10px; font-size: 14px; }
+  .themebtn {
+    margin-top: 6px; background: none; border: 1px solid var(--border-strong);
+    border-radius: 999px; padding: 3px 9px; font-size: 14px; cursor: pointer;
+    color: var(--muted); transition: .15s; display: inline-block;
+  }
+  .themebtn:hover { background: var(--surface-2); }
+  footer { text-align: center; color: var(--faint); font-size: 11px; margin-top: 26px; line-height: 1.6; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+</style>
+
+<div class="wrap">
+  <h1 class="sr-only">Mountain Spirit 2026 Crew Running Order — Live-Dashboard</h1>
+  <header>
+    <div class="brandrow">
+      <div>
+        <div class="eyebrow">Country High · Crew</div>
+        <div class="title display">Mountain<br>Spirit '26
+          <span class="sub">Running Order · Birg</span>
+        </div>
+      </div>
+      <div class="clockbox">
+        <div class="clock" id="clock">--:--</div>
+        <div class="clocklabel" id="clocklabel">Uhrzeit</div>
+        <div class="altitude">▲ Birg 2677 m</div>
+        <button class="themebtn" id="themebtn" onclick="toggleTheme()" aria-label="Hell/Dunkel wechseln">🌙 DARK</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="daytoggle" role="group" aria-label="Tag wählen">
+        <button id="btn-fr" aria-pressed="false" onclick="setDay('fr')">Freitag<span class="d2">07.08 · Aufbau</span></button>
+        <button id="btn-sa" aria-pressed="true" onclick="setDay('sa')">Samstag<span class="d2">08.08 · Event</span></button>
+        <button id="btn-so" aria-pressed="false" onclick="setDay('so')">Sonntag<span class="d2">09.08 · Brunch</span></button>
+      </div>
+      <div class="chiprow" id="chiprow"></div>
+      <div class="livebar" id="livebar">
+        <button class="livebtn" id="livebtn" onclick="goLive()"><span class="dot"></span><span id="livetext">Live</span></button>
+        <input type="range" id="scrub" min="360" max="1260" step="1" value="735" aria-label="Zeit simulieren" oninput="onScrub(this.value)">
+        <span class="scrubval" id="scrubval">12:15</span>
+      </div>
+      <div class="eventday-note" id="eventday-note"></div>
+      <div class="preview-note" id="prevnote"></div>
+    </div>
+  </header>
+
+  <div class="hero" id="hero"></div>
+
+  <div class="tl-head">
+    <h2>Ablauf</h2>
+    <span class="count" id="tlcount"></span>
+  </div>
+  <div class="timeline" id="timeline"></div>
+
+  <footer>
+    Stand 19.07.2026 · Crew-Anpassung: Fabienne ersetzt durch Karin + Sierd Heijers (Eltern Kim).<br>
+    Crew Birg: Kim · Karin · Sierd · Olga · Renata · Michaela · Susanne · Ruth · Marlies · Marion · Richi — Check-In Stechelberg: Nicole · Barbara
+  </footer>
+</div>
+
+<script>
+  const DATA = {
+    fr: [
+      [480,"Material packen",["Kim"],"Aris","inkl. Photobooth","normal"],
+      [660,"Sonnenblumen schneiden",["Marlies"],"Gwatt","Behälter für Transport","normal"],
+      [660,"Video: Blumen (Grüassli)",["Marlies"],"Gwatt","an Kim → Story","video"],
+      [765,"Anfahrt Stechelberg",["Kim","Marlies"],"Aris → Spiez","","normal"],
+      [840,"Umladen Material",["Kim","Marlies","Heike","Richi","Marion"],"Talstation","inkl. RollUps + Hocker SHB · PA-Anlage (Richi) geht mit hoch","normal"],
+      [861,"Bahnfahrt Birg",["Kim","Marlies","Heike","Richi","Marion"],"Stechelberg → Birg","Material + PA + Tickets SHB","normal"],
+      [880,"Ankunft Birg · Ausladen",["Kim","Marlies","Heike","Richi","Marion"],"Birg","","normal"],
+      [885,"Kaffeepause / Ankommen",["Kim","Marlies"],"Bistro Birg","","normal"],
+      [900,"Aufbau Bühne (Terrasse)",["SHB"],"Birg","Tanzbühne","normal"],
+      [900,"Photobooth Aufbau + Test",["Kim","Marlies"],"Birg","im Shop","normal"],
+      [930,"Deko Toiletten + Schilder",["Marlies"],"Birg","","normal"],
+      [930,"Shop vorbereiten",["Kim","Marlies"],"Birg","Tische / Möbel","normal"],
+      [1005,"Video: Birg (1 Tag zuvor)",["Kim"],"Birg","Story","video"],
+      [1026,"Bahnfahrt runter",["Kim","Marlies","Richi","Marion"],"Birg → Mürren","Kim/Richi/Marion → Alpenruh · Marlies fährt heim","normal"],
+      [1035,"Check-In Alpenruh",["Kim","Richi","Marion"],"Mürren","⚠️ Zimmer bei Heike reservieren","normal"],
+      [1050,"Social Media Time",["Kim"],"Alpenruh","","normal"],
+      [1200,"Abendessen Alpenruh",["Kim","Johnny","Richi","Marion"],"Alpenruh","+ Daniel · spätestens 21:00 · Hotelgäste Fr-Nacht","normal"]
+    ],
+    so: [
+      [600,"Frühstück Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh Mürren","+ Daniel, Markus, Lina · vor der Abfahrt","normal"],
+      [615,"Besammlung Mürren",["Johnny","Priska","Sabine"],"Mürren","+ Daniel, Markus, Lina · Armbändel + Artist-Badge = Bahnticket","normal"],
+      [620,"Gondel hoch — Schilthorn",["Johnny","Priska","Sabine"],"Mürren → Schilthorn","+ Daniel, Markus, Lina · Piz Gloria 2'970 m","normal"],
+      [660,"Brunch Piz Gloria",["Johnny","Priska","Sabine"],"Schilthorn · Piz Gloria","+ Daniel, Markus, Lina · 6 Personen · reserviert via Heike","key"],
+      [780,"Individuelle Heimreise",["Johnny","Priska","Sabine"],"Schilthorn → Stechelberg","+ Daniel, Markus, Lina · ab ~13:00 oder nach Wahl · Armbändel + Artist-Badge gilt als Bahnticket","normal"]
+    ],
+    sa: [
+      [450,"Besammlung Setup-Crew (Birg)",["Karin","Sierd","Olga","Renata","Michaela","Susanne","Ruth","Marlies"],"Talstation Stechelberg","fahren hoch auf die Birg","normal"],
+      [455,"Umladen Material",["Karin","Sierd","Olga","Renata","Michaela","Susanne","Ruth","Marlies"],"Talstation","","normal"],
+      [501,"Gondel Stechelberg → Birg",["Karin","Sierd","Olga","Renata","Michaela","Susanne","Ruth","Marlies","Kim"],"Stechelberg → Birg","ganze Crew ab Stechelberg · 08:21","normal"],
+      [510,"Gondel Mürren → Birg",["Richi","Marion"],"Mürren → Birg","Richi für PA-Aufbau · 08:30","normal"],
+      [520,"Ankunft Birg · Ausladen",["Kim","Marlies","Karin","Sierd","Olga","Renata","Michaela","Susanne","Ruth","Richi","Marion"],"Birg","Setup-Crew · 08:40","normal"],
+      [525,"Kaffeepause Crew",["Kim","Marlies","Karin","Sierd","Olga","Renata","Michaela","Susanne","Ruth","Richi","Marion"],"Birg","Sponsoring SHB · Setup-Crew","normal"],
+      [535,"Tische eindecken & deko",["Renata","Marlies"],"Birg","","normal"],
+      [535,"Shop einrichten",["Karin","Olga","Michaela","Ruth"],"Birg","","normal"],
+      [535,"Technik Audio / PA aufbauen",["Richi","Sierd","Susanne"],"Birg","PA steht seit Freitag oben · Sierd hilft Richi","normal"],
+      [535,"Photobooth aufstellen & testen",["Kim","Marion"],"Birg","Dolder Pro Rainbow · Plug & Play im Shop","normal"],
+      [535,"Briefing Gastroteam",["Kim"],"Birg","~5 Min · vor oder nach Photobooth","normal"],
+      [535,"Strohballen + Deko outdoor",["SHB"],"Birg","Fotobooth-Ecke + DJ-Tisch","normal"],
+      [555,"Beschilderung + Deko WCs",["Marlies","Renata"],"Birg","nach Tische & Deko","normal"],
+      [555,"Springerin — Shop oder DJ",["Marion"],"Birg","nach Photobooth · flexibel wo Unterstützung gebraucht","normal"],
+      [561,"Gondel Stechelberg → Birg",["Priska","Sabine"],"Stechelberg → Birg","09:21 ab Stechelberg · Ankunft 09:40","normal"],
+      [570,"Gondel Mürren → Birg",["Johnny"],"Mürren → Birg","+ Daniel · 09:30 ab Mürren · Ankunft 09:40","normal"],
+      [580,"Ankunft Artists",["Johnny","Priska","Sabine"],"Birg","alle Artists oben · Sound Check vorbereiten","normal"],
+      [570,"Aufbau Check-In (Tisch/Bank)",["SHB"],"Stechelberg","","normal"],
+      [600,"Sound Check",["Richi","Kim","Priska","Johnny","Sabine"],"Birg","","key"],
+      [600,"Video: Dekoarbeiten",["Kim"],"Birg","Story","video"],
+      [600,"Eintreffen Check-In Crew",["Nicole","Barbara"],"Stechelberg","bestätigen","normal"],
+      [610,"Aufbau / Set-Up Check-In",["Nicole","Barbara"],"Stechelberg","rechts vom Haupteingang","normal"],
+      [630,"Video: We are ready",["Nicole"],"Stechelberg","Story","video"],
+      [630,"Guest Check-In öffnet",["Nicole","Barbara"],"Stechelberg","Tickets, Armbändali (= Bahnticket!), Säckli, Badges · kein früheres Check-In!","key"],
+      [621,"Gondel Stechelberg → Birg",["Tobi"],"Stechelberg → Birg","10:21 ab Stechelberg · Ankunft 10:40","normal"],
+      [641,"Bahnfahrt Birg (Gäste)",["Gäste"],"Stechelberg → Birg","10:41 / 10:51","normal"],
+      [645,"Welcome Drink bereit",["Gastro"],"Birg","","normal"],
+      [640,"Ankunft Tobi Pohl",["Tobi"],"Birg","Foto & Video · Präsenzzeit ab 10:40 · Voucher CHF 50.–","normal"],
+      [670,"Erste Gäste treffen ein",["Kim"],"Birg","","normal"],
+      [675,"Check-In schliesst",["Nicole","Barbara"],"Stechelberg","","key"],
+      [681,"Letzte offizielle Gondel hoch",["Gäste","Nicole","Barbara"],"Stechelberg","danach alle 10 Min · Tombola-Lose + Schüssel mit!","normal"],
+      [705,"Crew-Foto — alle zusammen",["ALLE"],"Birg","wenn alle oben sind, vor dem Opening","key"],
+      [720,"Eintanzen",["Richi"],"Birg","","normal"],
+      [735,"Versammlung + Opening",["ALLE"],"Birg","Begrüssung, Programm, Danke (Kim)","key"],
+      [740,"Eröffnungstanz",["Johnny","Priska","Sabine","Kim"],"Birg","Alle 3 Choreograf:innen + Kim wenn Platz · Anmod + Teach + Crowd-Foto","key"],
+      [780,"Freies Tanzen / Verpflegung",["ALLE"],"Birg","offener Block","normal"],
+      [805,"Ankündigung + Set-Up Workshop 1",["Kim","Johnny","Priska","Sabine","Nicole"],"Birg","","normal"],
+      [810,"Workshop 1 — Johnny, Priska & Sabine",["Johnny","Priska","Sabine"],"Birg","gemeinsam · Filmen: Nicole / Tobi","key"],
+      [920,"Tombola (Ziehung)",["Kim","Renata"],"Birg","die eine Ziehung · Preise gegen Los im Shop","key"],
+      [925,"Ankündigung + Set-Up Workshop 2",["Kim","Johnny","Nicole"],"Birg","","normal"],
+      [930,"Workshop 2 — Johnny",["Johnny"],"Birg","Filmen: Nicole / Tobi","key"],
+      [1005,"Info nächste Events",["Kim","Johnny"],"Birg","Boot Camp / Dance Fever","normal"],
+      [1020,"Kurz-Repetition Workshop 1",["Johnny","Priska","Sabine"],"Birg","","normal"],
+      [1065,"Kurz-Repetition Workshop 2",["Johnny"],"Birg","","normal"],
+      [1075,"Thank you & Goodbye",["Kim"],"Birg","inkl. Priska, Sabine + Johnny","key"],
+      [1086,"Letzte offizielle Gondel",["Gäste"],"Birg → Stechelberg","","normal"],
+      [1130,"Shop offen",["Karin","Olga"],"Birg","Shop-Betrieb 11:30–18:00 · Karin + Olga","normal"],
+      [1110,"Shop schliesst / Rückbau",["Karin","Sierd","Olga"],"Birg","Sierd als Springer beim Rückbau","normal"],
+      [1110,"Abbau (Deko, PA, Photobooth)",["ALLE"],"Birg","","normal"],
+      [1140,"Letzte Country High Gondel",["Gäste"],"Birg → Stechelberg","","normal"],
+      [1200,"Bahnfahrt Stechelberg (Crew)",["ALLE"],"Birg → Stechelberg","mit SHB-Staff runter","normal"],
+      [1230,"Individuelle Heimreise",["ALLE"],"","","normal"],
+      [1260,"Abendessen Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh","+ Daniel, Markus, Lina · spätestens 21:00 · Hotelgäste Sa-Nacht","normal"]
+    ]
+  };
+
+  const CREW = ["Kim","Johnny","Priska","Sabine","Richi","Marion","Marlies","Nicole","Barbara","Renata","Karin","Sierd","Olga","Heike","Michaela","Susanne","Ruth","Tobi"];
+  const EVENT_DAYS = { "2026-08-07": "fr", "2026-08-08": "sa", "2026-08-09": "so" };
+
+  let day = "sa";
+  let person = "ALLE";
+  let liveMode = false;
+  let simMin = 735;
+
+  function pad(n){ return String(n).padStart(2,"0"); }
+  function fmt(min){ return pad(Math.floor(min/60)) + ":" + pad(min%60); }
+  function realMin(){ const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
+  function todayKey(){ const d = new Date(); return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
+  function nowMin(){ return liveMode ? realMin() : simMin; }
+  function rowMatches(who){ return person==="ALLE" || who.includes(person) || who.includes("ALLE"); }
+
+  function buildChips(){
+    const row = document.getElementById("chiprow");
+    const mk = (val,label) => `<button class="chip" data-p="${val}" aria-pressed="${person===val}" onclick="setPerson('${val}')">${label}</button>`;
+    row.innerHTML = mk("ALLE","Alle") + CREW.map(c=>mk(c,c)).join("");
+  }
+
+  function setDay(d){
+    day = d;
+    document.getElementById("btn-fr").setAttribute("aria-pressed", d==="fr");
+    document.getElementById("btn-sa").setAttribute("aria-pressed", d==="sa");
+    document.getElementById("btn-so").setAttribute("aria-pressed", d==="so");
+    const items = DATA[d];
+    const sc = document.getElementById("scrub");
+    sc.min = items[0][0]-15; sc.max = items[items.length-1][0]+30;
+    if(simMin < +sc.min) simMin = +sc.min;
+    if(simMin > +sc.max) simMin = +sc.max;
+    render();
+  }
+  function setPerson(p){
+    person = p;
+    document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed", c.dataset.p===p));
+    render();
+  }
+  function goLive(){
+    liveMode = true;
+    const tk = todayKey();
+    if(EVENT_DAYS[tk]) setDay(EVENT_DAYS[tk]);
+    updateLiveUI(); render();
+  }
+  function onScrub(v){
+    liveMode = false; simMin = +v;
+    updateLiveUI(); render();
+  }
+  function updateLiveUI(){
+    const btn = document.getElementById("livebtn");
+    btn.classList.toggle("on", liveMode);
+    document.getElementById("livetext").textContent = liveMode ? "Live" : "Live starten";
+    document.getElementById("scrub").value = nowMin();
+    document.getElementById("scrubval").textContent = fmt(nowMin());
+  }
+
+  function heroCard(cls,label,tag,item,extra){
+    const [min,title,who,place,note] = item;
+    const whoTxt = who.includes("ALLE") ? "Ganze Crew" : who.join(", ");
+    return `<div class="card ${cls}">
+      <div class="lbl ${cls}"><span>${label}</span>${tag?`<span class="tag">${tag}</span>`:""}</div>
+      <div class="hero-title">${title}</div>
+      <div class="hero-meta"><span class="who">${whoTxt}</span>${place?`<span>▸ ${place}</span>`:""}<span class="hero-time">${fmt(min)}</span></div>
+      ${note?`<div class="hero-note">${note}</div>`:""}
+      ${extra||""}
+    </div>`;
+  }
+
+  function render(){
+    const items = DATA[day];
+    const useTime = isEventDay() || liveMode;
+    const t = useTime ? nowMin() : -1;
+
+    let curIdx = -1;
+    if(useTime){ for(let i=0;i<items.length;i++){ if(items[i][0] <= t) curIdx = i; } }
+    const nextIdx = useTime ? items.findIndex(it => it[0] > t) : 0;
+
+    // preview note
+    const tk = todayKey();
+    const pv = document.getElementById("prevnote");
+    if(EVENT_DAYS[tk]){ pv.classList.remove("show"); }
+    else {
+      pv.classList.add("show");
+      pv.innerHTML = liveMode
+        ? `<b>Vorschau.</b> Heute ist nicht Event-Tag — die Uhr läuft echt, das Programm startet am <b>Sa 08.08.2026</b>. Zieh am Regler, um den Tag durchzuspielen.`
+        : `<b>Vorschau-Modus.</b> Du spielst den Tag über den Regler durch (simuliert <b>${fmt(t)}</b>). Am Event auf „Live starten" tippen.`;
+    }
+
+    // hero — nur am Eventtag anzeigen
+    const hero = document.getElementById("hero");
+    let html = "";
+    if(useTime){
+      const cur = curIdx>=0 ? items[curIdx] : null;
+      const nxt = nextIdx>=0 ? items[nextIdx] : null;
+      if(cur){
+        html += heroCard("now","Jetzt", fmt(cur[0]), cur);
+      } else {
+        html += `<div class="card now"><div class="lbl now">Startklar</div><div class="idle">Programm startet um <b>${fmt(items[0][0])}</b> — noch ${fmtDur(items[0][0]-t)}.</div></div>`;
+      }
+      if(nxt){
+        const delta = nxt[0]-t;
+        const cd = `<div class="hero-note">In <span class="countdown">${fmtDur(delta)}</span></div>`;
+        html += heroCard("next","Als nächstes", fmt(nxt[0]), nxt, cd);
+      } else {
+        html += `<div class="card next"><div class="lbl next">Als nächstes</div><div class="idle">Das war's — schöner Tag, Crew. 🤠</div></div>`;
+      }
+    }
+    hero.innerHTML = html;
+
+    // timeline
+    const tl = document.getElementById("timeline");
+    let visible = 0;
+    tl.innerHTML = items.map((it,i)=>{
+      const [min,title,who,place,note,type] = it;
+      const match = rowMatches(who);
+      if(!match && person!=="ALLE"){ /* keep but dim */ }
+      const isNow = i===curIdx;
+      const isPast = min <= t && !isNow;
+      const whoTxt = who.includes("ALLE") ? "Ganze Crew" : who.join(", ");
+      let cls = "row";
+      if(type==="key") cls += " key";
+      if(isPast) cls += " past";
+      if(isNow) cls += " now-row";
+      if(person!=="ALLE"){ cls += match ? " mine" : " dim"; }
+      if(match || person==="ALLE") visible++;
+      const badge = type==="key" ? `<span class="badge key">Key</span>` : (type==="video" ? `<span class="badge video">Story</span>` : "");
+      const check = isPast ? `<span class="check">✓ </span>` : "";
+      return `<div class="${cls}">
+        <div class="marker"></div>
+        <div class="time">${check}${fmt(min)}</div>
+        <div class="body">
+          <div class="rt">${title}${badge}</div>
+          <div class="meta"><span class="who">${whoTxt}</span>${place?`<span>▸ ${place}</span>`:""}</div>
+          ${note?`<div class="note">${note}</div>`:""}
+        </div>
+      </div>`;
+    }).join("");
+
+    document.getElementById("tlcount").textContent =
+      (person==="ALLE" ? items.length+" Punkte" : person+" · "+items.filter(it=>rowMatches(it[2])).length+" von "+items.length);
+
+    // scroll now-row into view on first render of live
+    updateLiveUI();
+  }
+
+  function fmtDur(mins){
+    if(mins<=0) return "jetzt";
+    const h=Math.floor(mins/60), m=mins%60;
+    return h>0 ? `${h} h ${pad(m)} min` : `${m} min`;
+  }
+
+  function tick(){
+    const d = new Date();
+    document.getElementById("clock").textContent = pad(d.getHours())+":"+pad(d.getMinutes());
+    if(liveMode) render();
+  }
+
+  function isEventDay(){ return !!EVENT_DAYS[todayKey()]; }
+
+  function toggleTheme(){
+    const root = document.documentElement;
+    const current = root.getAttribute("data-theme");
+    const isDark = current === "dark" || (!current && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const next = isDark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    document.getElementById("themebtn").textContent = next === "dark" ? "☀️ LIGHT" : "🌙 DARK";
+  }
+
+  // init
+  (function(){
+    buildChips();
+    const tk = todayKey();
+    if(EVENT_DAYS[tk]){ liveMode = true; day = EVENT_DAYS[tk]; }
+    else { liveMode = false; day = "sa"; simMin = 735; }
+
+    // Slider nur am Eventtag sichtbar
+    const livebar = document.getElementById("livebar");
+    const evtnote = document.getElementById("eventday-note");
+    if(isEventDay()){
+      livebar.style.display = "flex";
+      evtnote.classList.remove("show");
+    } else {
+      livebar.style.display = "none";
+      evtnote.classList.add("show");
+      evtnote.innerHTML = "🏔️ Am <b>08.08.2026</b> startet der Live-Modus automatisch — dann läuft der Ablauf hier in Echtzeit mit.";
+    }
+
+    setDay(day);
+    goLiveInit();
+    tick();
+    setInterval(tick, 20000);
+  })();
+  function goLiveInit(){
+    const tk = todayKey();
+    if(EVENT_DAYS[tk]){ liveMode = true; }
+    updateLiveUI(); render();
+  }
+</script>
