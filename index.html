@@ -197,6 +197,39 @@
   .themebtn:hover { background: var(--surface-2); }
   footer { text-align: center; color: var(--faint); font-size: 11px; margin-top: 26px; line-height: 1.6; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+  /* Contacts */
+  .contacts-wrap { margin-top: 24px; }
+  .contacts-toggle {
+    width: 100%; display: flex; align-items: center; justify-content: space-between;
+    background: var(--surface); border: 1px solid var(--border-strong); border-radius: 12px;
+    padding: 12px 16px; cursor: pointer; color: var(--ink); font-size: 14px; font-weight: 700;
+    letter-spacing: .02em; transition: .15s;
+  }
+  .contacts-toggle:hover { background: var(--surface-2); }
+  .ctoggle-icon { color: var(--faint); transition: transform .2s; }
+  .contacts-list.open ~ * {}
+  .contacts-toggle[aria-expanded="true"] .ctoggle-icon { transform: rotate(90deg); }
+  .contacts-list { display: none; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .contacts-list.open { display: flex; }
+  .cgroup-label {
+    font-size: 10px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--faint); padding: 8px 2px 2px;
+  }
+  .ccard {
+    display: grid; grid-template-columns: 1fr auto; grid-template-rows: auto auto;
+    gap: 1px 12px; align-items: center;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 12px 16px; text-decoration: none; color: inherit; transition: .15s;
+  }
+  .ccard:hover, .ccard:active { background: var(--now-bg); border-color: var(--accent); }
+  .cname { font-size: 15px; font-weight: 700; color: var(--ink); grid-column: 1; grid-row: 1; }
+  .crole { font-size: 12px; color: var(--muted); grid-column: 1; grid-row: 2; }
+  .cnum {
+    font-size: 15px; font-weight: 700; color: var(--accent-deep);
+    font-variant-numeric: tabular-nums; grid-column: 2; grid-row: 1 / 3;
+    text-align: right; white-space: nowrap;
+  }
 </style>
 
 <div class="wrap">
@@ -241,6 +274,27 @@
     <span class="count" id="tlcount"></span>
   </div>
   <div class="timeline" id="timeline"></div>
+
+  <!-- Kontakte -->
+  <div class="contacts-wrap">
+    <button class="contacts-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.setAttribute('aria-expanded',this.nextElementSibling.classList.contains('open'));" aria-expanded="false">
+      <span>📞 Notfallkontakte</span><span class="ctoggle-icon">▸</span>
+    </button>
+    <div class="contacts-list">
+      <div class="cgroup-label">COUNTRY HIGH</div>
+      <a class="ccard" href="tel:+41796873258"><div class="cname">Kim Ryter</div><div class="crole">Country High</div><div class="cnum">+41 79 687 32 58</div></a>
+      <a class="ccard" href="tel:+41797548206"><div class="cname">Nicole Abgottspon</div><div class="crole">Check-In Stechelberg</div><div class="cnum">+41 79 754 82 06</div></a>
+      <a class="ccard" href="tel:+41788488451"><div class="cname">Renata Grandi</div><div class="crole">Crew Birg</div><div class="cnum">+41 78 848 84 51</div></a>
+      <a class="ccard" href="tel:+41774308182"><div class="cname">Heike Richter</div><div class="crole">Koordination Event</div><div class="cnum">+41 77 430 81 82</div></a>
+      <div class="cgroup-label">SCHILTHORNBAHN</div>
+      <a class="ccard" href="tel:+41792673017"><div class="cname">Robert Schneiter</div><div class="crole">Technischer Leiter</div><div class="cnum">+41 79 267 30 17</div></a>
+      <a class="ccard" href="tel:+41767609010"><div class="cname">Lars Heinecke</div><div class="crole">Bistro Birg</div><div class="cnum">+41 76 760 90 10</div></a>
+      <a class="ccard" href="tel:+41798772600"><div class="cname">Thomas Zumbach</div><div class="crole">Leiter Gastronomie</div><div class="cnum">+41 79 877 26 00</div></a>
+      <a class="ccard" href="tel:+41338266007"><div class="cname">Schilthornbahn AG</div><div class="crole">Zentrale</div><div class="cnum">+41 33 826 00 07</div></a>
+      <div class="cgroup-label">HOTEL</div>
+      <a class="ccard" href="tel:+41338568800"><div class="cname">Marco Fröse</div><div class="crole">Hotel Alpenruh Mürren</div><div class="cnum">+41 33 856 88 00</div></a>
+    </div>
+  </div>
 
   <footer>
     Stand 19.07.2026 · Crew-Anpassung: Fabienne ersetzt durch Karin + Sierd Heijers (Eltern Kim).<br>
