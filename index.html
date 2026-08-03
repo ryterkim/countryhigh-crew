@@ -71,7 +71,7 @@
     line-height: .98;
   }
   .eyebrow {
-    font-family: 'Wolesbro', 'CoreSansG', serif; text-transform: uppercase; letter-spacing: .18em; font-size: 11px;
+    font-family: 'FigtreeLight', 'CoreSansG', sans-serif; text-transform: uppercase; letter-spacing: .18em; font-size: 11px;
     font-weight: 400; color: var(--accent-deep);
   }
 
@@ -188,12 +188,20 @@
   .row.past .time, .row.past .rt { color: var(--done-ink); font-weight: 600; }
   .row.past .check { color: var(--beige); }
   .row.now-row { background: var(--now-bg); border-radius: 12px; border-bottom-color: transparent; box-shadow: var(--shadow); margin: 2px 0; padding: 13px 12px; }
-  .row.now-row::before { content: "JETZT"; position: absolute; top: -8px; left: 10px; background: var(--accent); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .12em; padding: 2px 8px; border-radius: 5px; }
+  .row.now-row::before { content: var(--now-label); position: absolute; top: -8px; left: 10px; background: var(--accent); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .12em; padding: 2px 8px; border-radius: 5px; }
   .row.now-row .marker { background: var(--accent); }
   .row.dim { opacity: .3; }
   .row.mine .marker { background: var(--accent); }
 
   .empty { text-align: center; color: var(--muted); padding: 30px 10px; font-size: 14px; }
+  .langbtn {
+    margin-top: 4px; margin-left: 4px; background: none; border: 1px solid var(--border-strong);
+    color: var(--muted); border-radius: 8px; padding: 4px 8px; cursor: pointer;
+    font-size: 11px; font-weight: 700; letter-spacing: .06em; transition: .15s;
+  }
+  .langbtn:hover { background: var(--surface-2); }
+  .langbtn.active { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  :root { --now-label: "JETZT"; }
   .themebtn {
     margin-top: 6px; background: none; border: 1px solid var(--border-strong);
     border-radius: 999px; padding: 3px 9px; font-size: 14px; cursor: pointer;
@@ -310,15 +318,14 @@
   <div class="hero" id="hero"></div>
 
   <div class="tl-head">
-    <h2>Ablauf</h2>
-    <span class="count" id="tlcount"></span>
+    <h2 id="tl-head-h2">Ablauf</h2>
   </div>
   <div class="timeline" id="timeline"></div>
 
   <!-- Kontakte -->
   <div class="contacts-wrap">
     <button class="contacts-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.setAttribute('aria-expanded',this.nextElementSibling.classList.contains('open'));" aria-expanded="false">
-      <span>📞 Notfallkontakte</span><span class="ctoggle-icon">▸</span>
+      <span id="notfall-toggle-span">📞 Notfallkontakte</span><span class="ctoggle-icon">▸</span>
     </button>
     <div class="contacts-list">
       <div class="cgroup-label">COUNTRY HIGH</div>
@@ -449,6 +456,172 @@
     ]
   };
 
+
+  // ── Language system ──────────────────────────────────────────────────────
+  let lang = "de";
+
+  const T = {
+    de: {
+      alle:"Alle", ablauf:"Ablauf",
+      jetzt:"JETZT", heroNow:"Jetzt", heroNext:"Als nächstes",
+      ganzeCrew:"Ganze Crew", live:"Live", liveStart:"Live starten",
+      uhrzeit:"Uhrzeit", done:"jetzt",
+      startklar:"Startklar", startMsg:"Programm startet um", startIn:"— noch",
+      endMsg:"Das war’s — schöner Tag, Crew. \U0001f920",
+      prevLive:"<b>Vorschau.</b> Heute ist nicht Event-Tag — die Uhr läuft echt, das Programm startet am <b>Sa 08.08.2026</b>. Zieh am Regler, um den Tag durchzuspielen.",
+      prevSlide:"<b>Vorschau-Modus.</b> Du spielst den Tag über den Regler durch (simuliert <b>{t}</b>). Am Event auf „Live starten“ tippen.",
+      eventNote:"🏔️ Am <b>08.08.2026</b> startet der Live-Modus automatisch — dann läuft der Ablauf hier in Echtzeit mit.",
+      fr:"Freitag", frSub:"07.08 · Aufbau",
+      sa:"Samstag", saSub:"08.08 · Event",
+      so:"Sonntag", soSub:"09.08 · Brunch",
+      notfall:"📞 Notfallkontakte",
+    },
+    en: {
+      alle:"All", ablauf:"Schedule",
+      jetzt:"NOW", heroNow:"Now", heroNext:"Next up",
+      ganzeCrew:"Full Crew", live:"Live", liveStart:"Go Live",
+      uhrzeit:"Time", done:"now",
+      startklar:"Ready to go", startMsg:"Program starts at", startIn:"— in",
+      endMsg:"That’s a wrap — great day, crew. \U0001f920",
+      prevLive:"<b>Preview.</b> Today is not event day — the clock runs live, the event starts <b>Sat 08/08/2026</b>. Use the slider to simulate the day.",
+      prevSlide:"<b>Preview mode.</b> Simulating <b>{t}</b>. Tap Go Live on event day.",
+      eventNote:"🏔️ On <b>08/08/2026</b> live mode starts automatically — the schedule runs in real time.",
+      fr:"Friday", frSub:"08/07 · Setup",
+      sa:"Saturday", saSub:"08/08 · Event",
+      so:"Sunday", soSub:"08/09 · Brunch",
+      notfall:"📞 Emergency Contacts",
+    }
+  };
+
+  const DATA_EN = {
+    fr: {
+      "Material packen":              {title:"Pack materials"},
+      "Sonnenblumen schneiden":       {title:"Cut sunflowers", notes:"Container for transport"},
+      "Video: Blumen (Grüassli)":{title:"🎥 Video: Flowers (Hello from Kim!)", notes:"Send to Kim → Story"},
+      "Abfahrt Sarnen":               {title:"Depart from Sarnen", notes:"~1h45 drive · Arrival 13:45"},
+      "Anfahrt Region":               {title:"Drive to region"},
+      "Anfahrt Stechelberg":          {title:"Drive to Stechelberg"},
+      "Treffpunkt Talstation":        {title:"📍 Meet at valley station"},
+      "Bahntickets hinterlegen":      {title:"Drop off train tickets", notes:"Tickets for Johnny + Daniel · 16:15 gondola"},
+      "Bahnfahrt Birg":               {title:"Gondola to Birg", notes:"Equipment + PA"},
+      "Ankunft Birg · Ausladen":      {title:"Arrive Birg · Unload"},
+      "Kaffeepause / Ankommen":       {title:"☕ Coffee break / Settle in"},
+      "Aufbau Bühne (Terrasse)": {title:"Set up stage (terrace)", notes:"Dance stage"},
+      "Shop vorbereiten":             {title:"Prepare shop", notes:"Clean, organize · Tables, clothing racks"},
+      "Video: Birg (Story)":          {title:"🎥 Video: Birg (Story)"},
+      "Bahnfahrt Birg → Mürren": {title:"Gondola Birg → Mürren"},
+      "Bahnfahrt Stechelberg → Mürren": {title:"Gondola Stechelberg → Mürren", notes:"Train ticket waiting at Stechelberg station"},
+      "Apéro Terrasse":          {title:"🥂 Apéro on the Terrace"},
+      "Video: Warm-Up 🍹 (Story)":    {title:"🎥 Video: Warm-Up 🍹 (Story)"},
+      "Bahnfahrt Mürren → Stechelberg": {title:"Gondola Mürren → Stechelberg"},
+      "Rückfahrt":               {title:"Drive home", notes:"Kim → Aris · Marlies → Wimmis"},
+      "Abendessen":                   {title:"🍽 Dinner", notes:"Half board"},
+    },
+    so: {
+      "Besammlung Artists Bahnstation Mürren":      {title:"Artists meet at Mürren Station", notes:"incl. companions"},
+      "Gondelfahrt Mürren → Schilthorn Piz Gloria":{title:"Gondola Mürren → Schilthorn Piz Gloria", notes:"incl. companions · approx. 10:15"},
+      "Artists Brunch — Schilthorn Piz Gloria":     {title:"🍽 Artists Brunch — Schilthorn Piz Gloria", notes:"incl. companions · reserved via Heike"},
+      "Individuelle Heimreise":                          {title:"Individual departure home", notes:"incl. companions · from ~13:00"},
+    },
+    sa: {
+      "Allgemeine Anfahrt":                     {title:"General arrival / drive to venue"},
+      "Treffpunkt Set-Up Crew Stechelberg":     {title:"📍 Set-up crew meet at Stechelberg"},
+      "Umladen Material in Gondel":             {title:"Transfer equipment to gondola"},
+      "Übergabe Check-In Material Kim → Heike":{title:"Hand over check-in materials Kim → Heike"},
+      "Gondel Stechelberg → Mürren":  {title:"Gondola Stechelberg → Mürren"},
+      "Gondel Mürren → Birg":         {title:"Gondola Mürren → Birg"},
+      "Ankunft Set-Up Crew Birg":               {title:"Set-up crew arrives at Birg"},
+      "Kaffee & Gipfeli 🥐":                    {title:"☕ Coffee & croissant 🥐", notes:"Sponsored by SHB"},
+      "Kurzes Team Briefing":                   {title:"Quick team briefing"},
+      "Deko Team":                              {title:"Decoration team", notes:"Set up tables & decor · Signs · WC deco"},
+      "Shop Team":                              {title:"Shop team", notes:"Set up shop"},
+      "PA / Musikanlage aufbauen":              {title:"Set up PA / sound system", notes:"PA has been up since Friday · Sierd helps Richi"},
+      "Photobooth aufbauen":                    {title:"Set up photobooth", notes:"Marion switches to deco team ~09:15"},
+      "Check-In Hotel Alpenruh (Gepäck Abgabe)":{title:"Hotel check-in: luggage drop (Alpenruh)"},
+      "Briefing Gastro Team":                   {title:"Gastro team briefing"},
+      "Koordination Check-In Aufbau":           {title:"Coordinate check-in setup", notes:"Schilthornbahn"},
+      "Video Story — Fahrt der Artists zur Birg":{title:"🎥 Video Story — Artists gondola ride up", notes:"Story format · Send to Kim"},
+      "Story posten":                           {title:"Post Story"},
+      "Ankunft Birg — Artists":            {title:"Artists arrive at Birg"},
+      "Sound Check":                            {title:"🎛 Sound Check"},
+      "Treffpunkt Talstation — Check-In Team":{title:"📍 Check-in team at valley station", notes:"Set up check-in"},
+      "Tobi trifft auf Birg ein":               {title:"Tobi arrives at Birg"},
+      "Briefing Tobi inkl. Übergabe Voucher":{title:"Brief Tobi incl. artist vouchers"},
+      "Crew Porträts einzeln":             {title:"📸 Individual crew portraits", notes:"For social media"},
+      "Video Story — We are ready 🎉":     {title:"🎥 Video Story — We are ready 🎉", notes:"Story format · Send to Kim"},
+      "Guest Check-In geöffnet":           {title:"✅ Guest check-in opens", notes:"Tickets · Wristbands (= train ticket!) · Welcome bag · Badges · No early check-in!"},
+      "Artists Porträts einzeln + Gruppenbild":{title:"📸 Artist portraits + group photo", notes:"For social media"},
+      "Bahnfahrt Birg (Gäste)":           {title:"Gondola to Birg (guests)", notes:"10:41 / 10:51"},
+      "Welcome Drink bereit":                   {title:"🥂 Welcome drink ready", notes:"Checked by Renata · SHB responsibility"},
+      "Crew & Artists tanzen «Oh Love» — Warm-Up":{title:"🕺 Crew & Artists dance «Oh Love» — Warm-Up", notes:"Shared moment · Sun terrace"},
+      "Erste Gäste treffen ein":           {title:"First guests arrive"},
+      "Check-In schliesst":                     {title:"Check-in closes"},
+      "Letzte offizielle Gondel hoch":          {title:"Last official gondola up", notes:"every 10 min after"},
+      "Shop offen":                             {title:"🛍 Shop open", notes:"Shop hours 11:30–18:00"},
+      "Eintanzen 💃🏼":                          {title:"💃🏼 Warm-up dancing"},
+      "Opening":                                {title:"🎉 Opening", notes:"Full crew ready on stage"},
+      "📸 Crowd-Foto":                           {title:"📸 Crowd Photo", notes:"Johnny selfie stick · Tobi from another angle"},
+      "Eröffnungstanz — «Oh Love»":{title:"Opening Dance — «Oh Love»", notes:"Without Heike + Tobi"},
+      "Rock the Dancefloor 🕺🏼":               {title:"Rock the Dancefloor 🕺🏼"},
+      "📸🎥 Video & Foto Coverage":             {title:"📸🎥 Video & Photo Coverage", notes:"ongoing · full event"},
+      "📸 Crew Porträts einzeln":          {title:"📸 Individual crew portraits", notes:"Nicole + Barbara fresh from check-in"},
+      "📸 Crew Gruppenbild":                    {title:"📸 Full crew group photo", notes:"Full crew · Tobi photographs"},
+      "Set-Up Workshop":                        {title:"Workshop setup", notes:"Microphone wiring etc."},
+      "Ankündigung Workshop 1":            {title:"Workshop 1 announcement", notes:"Kim MCs · Richi on sound"},
+      "Workshop 1 — Surprise Dance 🎉":    {title:"Workshop 1 — Surprise Dance 🎉"},
+      "Ankündigung Workshop 2":            {title:"Workshop 2 announcement", notes:"Kim MCs · Richi on sound"},
+      "Workshop 2 — to be defined 💫":     {title:"Workshop 2 — to be defined 💫"},
+      "Tobi verlässt Event":              {title:"Tobi leaves the event", notes:"Gondola down"},
+      "Info-Block — Gondelzeiten · Upcoming Events":{title:"ℹ️ Info block — Gondola times · Upcoming events", notes:"Transition to workshop recap · Richi on sound"},
+      "Workshop 1 — Repetition":           {title:"Workshop 1 — Recap 🔁"},
+      "Workshop 2 — Repetition":           {title:"Workshop 2 — Recap 🔁"},
+      "Letzte öffentliche SHB Gondel":     {title:"Last public SHB gondola"},
+      "Shop schliesst":                         {title:"Shop closes"},
+      "Rückbau Shop":                      {title:"Break down shop"},
+      "LETZTE COUNTRY HIGH Gondel für Gäste":{title:"🚡 LAST COUNTRY HIGH gondola for guests"},
+      "Kompletter Event Rückbau":          {title:"Full event breakdown"},
+      "Crew Gondel Birg → Mürren":   {title:"Crew gondola Birg → Mürren"},
+      "Verabschiedung Sabine, Priska + Johnny": {title:"👋 Farewell — Sabine, Priska + Johnny"},
+      "Bezug Hotelzimmer":                      {title:"Hotel room check-in", notes:"Hotel Alpenruh Mürren"},
+      "Abendessen Artists":                     {title:"🍽 Artists dinner", notes:"Half board"},
+      "Ankunft Stechelberg · individuelle Heimreise":{title:"Arrive Stechelberg · individual departures"},
+    }
+  };
+
+  function t(key){ return T[lang]?.[key] ?? T.de[key] ?? key; }
+
+  function entryTitle(item){
+    if(lang !== "en") return item[1];
+    return DATA_EN[day]?.[item[1]]?.title || item[1];
+  }
+  function entryNotes(item){
+    if(lang !== "en") return item[4];
+    if(!item[4]) return "";
+    return DATA_EN[day]?.[item[1]]?.notes ?? item[4];
+  }
+
+  function setLang(l){
+    lang = l;
+    const btn = document.getElementById("langbtn");
+    btn.textContent = l === "de" ? "🇬🇧 EN" : "🇩🇪 DE";
+    btn.classList.toggle("active", l === "en");
+    document.documentElement.style.setProperty("--now-label", '"' + t("jetzt") + '"');
+    updateDayButtons();
+    buildChips();
+    render();
+  }
+  function toggleLang(){ setLang(lang === "de" ? "en" : "de"); }
+
+  function updateDayButtons(){
+    document.getElementById("btn-fr").innerHTML = t("fr") + '<span class="d2">' + t("frSub") + "</span>";
+    document.getElementById("btn-sa").innerHTML = t("sa") + '<span class="d2">' + t("saSub") + "</span>";
+    document.getElementById("btn-so").innerHTML = t("so") + '<span class="d2">' + t("soSub") + "</span>";
+    const h = document.getElementById("tl-head-h2");
+    if(h) h.textContent = t("ablauf");
+    const nc = document.getElementById("notfall-toggle-span");
+    if(nc) nc.textContent = t("notfall");
+  }
+  // ── End language system ──────────────────────────────────────────────────
   const CREW_MEMBERS = ["Kim","Marlies","Renata","Ruth","Nicole","Olga","Karin","Sierd","Susanne","Michaela","Marion","Richi"];
   const ARTISTS = ["Johnny","Priska","Sabine","Richi"];
   const SHB_MEMBERS = ["Heike","SHB","Gastro"];
@@ -483,7 +656,7 @@
     else if(person === "GRP:SHB") members = SHB_MEMBERS;
     else members = CREW;
     row.innerHTML =
-      mk("ALLE","Alle") +
+      mk("ALLE",t("alle")) +
       mk("GRP:Crew","🤠 Crew"," chip-grp") +
       mk("GRP:Artists","🎤 Artists"," chip-grp") +
       mk("GRP:SHB","🏔 SHB"," chip-grp") +
@@ -521,19 +694,21 @@
   function updateLiveUI(){
     const btn = document.getElementById("livebtn");
     btn.classList.toggle("on", liveMode);
-    document.getElementById("livetext").textContent = liveMode ? "Live" : "Live starten";
+    document.getElementById("livetext").textContent = liveMode ? t("live") : t("liveStart");
     document.getElementById("scrub").value = nowMin();
     document.getElementById("scrubval").textContent = fmt(nowMin());
   }
 
   function heroCard(cls,label,tag,item,extra){
     const [min,title,who,place,note] = item;
-    const whoTxt = who.includes("ALLE") ? "Ganze Crew" : who.join(", ");
+    const whoTxt = who.includes("ALLE") ? t("ganzeCrew") : who.join(", ");
+    const htitle = entryTitle(item);
+    const hnote = entryNotes(item);
     return `<div class="card ${cls}">
       <div class="lbl ${cls}"><span>${label}</span>${tag?`<span class="tag">${tag}</span>`:""}</div>
-      <div class="hero-title">${title}</div>
+      <div class="hero-title">${htitle}</div>
       <div class="hero-meta"><span class="who">${whoTxt}</span>${place?`<span>▸ ${place}</span>`:""}<span class="hero-time">${fmt(min)}</span></div>
-      ${note?`<div class="hero-note">${note}</div>`:""}
+      ${hnote?`<div class="hero-note">${hnote}</div>`:""}
       ${extra||""}
     </div>`;
   }
@@ -553,9 +728,7 @@
     if(EVENT_DAYS[tk]){ pv.classList.remove("show"); }
     else {
       pv.classList.add("show");
-      pv.innerHTML = liveMode
-        ? `<b>Vorschau.</b> Heute ist nicht Event-Tag — die Uhr läuft echt, das Programm startet am <b>Sa 08.08.2026</b>. Zieh am Regler, um den Tag durchzuspielen.`
-        : `<b>Vorschau-Modus.</b> Du spielst den Tag über den Regler durch (simuliert <b>${fmt(t)}</b>). Am Event auf „Live starten" tippen.`;
+      pv.innerHTML = liveMode ? t("prevLive") : t("prevSlide").replace("{t}", fmt(t));
     }
 
     // hero — nur am Eventtag anzeigen
@@ -565,16 +738,16 @@
       const cur = curIdx>=0 ? items[curIdx] : null;
       const nxt = nextIdx>=0 ? items[nextIdx] : null;
       if(cur){
-        html += heroCard("now","Jetzt", fmt(cur[0]), cur);
+        html += heroCard("now",t("heroNow"), fmt(cur[0]), cur);
       } else {
-        html += `<div class="card now"><div class="lbl now">Startklar</div><div class="idle">Programm startet um <b>${fmt(items[0][0])}</b> — noch ${fmtDur(items[0][0]-t)}.</div></div>`;
+        html += `<div class="card now"><div class="lbl now">${t("startklar")}</div><div class="idle">${t("startMsg")} <b>${fmt(items[0][0])}</b> ${t("startIn")} ${fmtDur(items[0][0]-t)}.</div></div>`;
       }
       if(nxt){
         const delta = nxt[0]-t;
-        const cd = `<div class="hero-note">In <span class="countdown">${fmtDur(delta)}</span></div>`;
-        html += heroCard("next","Als nächstes", fmt(nxt[0]), nxt, cd);
+        const cd = `<div class="hero-note">${lang==="de"?"In":"In"} <span class="countdown">${fmtDur(delta)}</span></div>`;
+        html += heroCard("next",t("heroNext"), fmt(nxt[0]), nxt, cd);
       } else {
-        html += `<div class="card next"><div class="lbl next">Als nächstes</div><div class="idle">Das war's — schöner Tag, Crew. 🤠</div></div>`;
+        html += `<div class="card next"><div class="lbl next">${t("heroNext")}</div><div class="idle">${t("endMsg")}</div></div>`;
       }
     }
     hero.innerHTML = html;
@@ -588,7 +761,9 @@
       if(!match && person!=="ALLE"){ /* keep but dim */ }
       const isNow = i===curIdx;
       const isPast = min <= t && !isNow;
-      const whoTxt = who.includes("ALLE") ? "Ganze Crew" : who.join(", ");
+      const whoTxt = who.includes("ALLE") ? t("ganzeCrew") : who.join(", ");
+      const dispTitle = entryTitle(it);
+      const dispNote = entryNotes(it);
       let cls = "row";
       if(type==="key") cls += " key";
       if(isPast) cls += " past";
@@ -601,22 +776,21 @@
         <div class="marker"></div>
         <div class="time">${check}${fmt(min)}</div>
         <div class="body">
-          <div class="rt">${title}${badge}</div>
+          <div class="rt">${dispTitle}${badge}</div>
           <div class="meta"><span class="who">${whoTxt}</span>${place?`<span>▸ ${place}</span>`:""}</div>
-          ${note?`<div class="note">${note}</div>`:""}
+          ${dispNote?`<div class="note">${dispNote}</div>`:""}
         </div>
       </div>`;
     }).join("");
 
-    document.getElementById("tlcount").textContent =
-      (person==="ALLE" ? items.length+" Punkte" : person+" · "+items.filter(it=>rowMatches(it[2])).length+" von "+items.length);
+
 
     // scroll now-row into view on first render of live
     updateLiveUI();
   }
 
   function fmtDur(mins){
-    if(mins<=0) return "jetzt";
+    if(mins<=0) return t("done");
     const h=Math.floor(mins/60), m=mins%60;
     return h>0 ? `${h} h ${pad(m)} min` : `${m} min`;
   }
@@ -654,9 +828,10 @@
     } else {
       livebar.style.display = "none";
       evtnote.classList.add("show");
-      evtnote.innerHTML = "🏔️ Am <b>08.08.2026</b> startet der Live-Modus automatisch — dann läuft der Ablauf hier in Echtzeit mit.";
+      evtnote.innerHTML = t("eventNote");
     }
 
+    setLang("de");
     setDay(day);
     goLiveInit();
     tick();
