@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mountain Spirit '26 · Packliste</title>
+<style>
+  :root {
+    --accent:#da705b; --accent-deep:#b8503c; --accent-soft:#f3ddd5;
+    --beige:#c0a888; --beige-soft:#ece2d3; --ground:#f6f1e9;
+    --surface:#fffdf9; --surface-2:#fbf5ec;
+    --ink:#2a221c; --muted:#7c7066; --faint:#a89c8f;
+    --border:#e7ddce; --border-strong:#d8ccb9;
+    --done-ink:#b3a99c; --shadow:0 1px 2px rgba(60,45,30,.05),0 4px 16px rgba(60,45,30,.06);
+    --green:#5a8a5a; --green-soft:#eaf3ea;
+  }
+  @media(prefers-color-scheme:dark){:root{
+    --accent:#e88872; --accent-deep:#f0a48f; --accent-soft:#3a2620;
+    --beige:#c9b393; --beige-soft:#33291f; --ground:#1a1512;
+    --surface:#241d18; --surface-2:#2c241d;
+    --ink:#f2e9dd; --muted:#b1a394; --faint:#7d7264;
+    --border:#382e25; --border-strong:#4a3d30; --done-ink:#6f6455;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.35);
+    --green:#7ab87a; --green-soft:#1e2e1e;
+  }}
+  :root[data-theme="dark"]{
+    --accent:#e88872; --accent-deep:#f0a48f; --accent-soft:#3a2620;
+    --beige:#c9b393; --beige-soft:#33291f; --ground:#1a1512;
+    --surface:#241d18; --surface-2:#2c241d;
+    --ink:#f2e9dd; --muted:#b1a394; --faint:#7d7264;
+    --border:#382e25; --border-strong:#4a3d30; --done-ink:#6f6455;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.35);
+    --green:#7ab87a; --green-soft:#1e2e1e;
+  }
+  :root[data-theme="light"]{
+    --accent:#da705b; --accent-deep:#b8503c; --accent-soft:#f3ddd5;
+    --beige:#c0a888; --beige-soft:#ece2d3; --ground:#f6f1e9;
+    --surface:#fffdf9; --surface-2:#fbf5ec;
+    --ink:#2a221c; --muted:#7c7066; --faint:#a89c8f;
+    --border:#e7ddce; --border-strong:#d8ccb9; --done-ink:#b3a99c;
+    --shadow:0 1px 2px rgba(60,45,30,.05),0 4px 16px rgba(60,45,30,.06);
+    --green:#5a8a5a; --green-soft:#eaf3ea;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:620px;margin:0 auto;padding:0 14px 80px}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:20;background:var(--ground);
+    border-bottom:1px solid var(--border);padding:14px 0 10px;
+  }
+  .hrow{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:.18em;font-size:11px;
+    font-weight:600;color:var(--accent-deep);margin-bottom:3px;
+  }
+  .title{font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1}
+  .title .sub{display:block;font-size:11px;letter-spacing:.14em;color:var(--muted);font-weight:600;margin-top:3px;text-transform:uppercase}
+  .themebtn{
+    border:1px solid var(--border-strong);background:var(--surface);
+    color:var(--muted);border-radius:999px;padding:5px 12px;cursor:pointer;
+    font-size:11px;font-weight:700;letter-spacing:.06em;white-space:nowrap;flex-shrink:0;
+  }
+  .backlink{
+    display:inline-flex;align-items:center;gap:5px;margin-top:8px;
+    font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--beige);border:1px solid var(--border-strong);border-radius:999px;padding:3px 9px;
+    text-decoration:none;
+  }
+
+  /* Progress summary */
+  .summary{
+    background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:14px 16px;margin:14px 0 0;display:flex;flex-direction:column;gap:10px;
+    box-shadow:var(--shadow);
+  }
+  .summary-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .summary-label{font-size:13px;color:var(--muted)}
+  .summary-count{font-size:15px;font-weight:800;color:var(--ink)}
+  .progress-bar{height:7px;border-radius:99px;background:var(--border);overflow:hidden;flex:1}
+  .progress-fill{height:100%;border-radius:99px;background:var(--accent);transition:width .3s ease}
+  .complete-msg{
+    font-size:13px;font-weight:700;color:var(--green);text-align:center;
+    padding:4px;display:none;
+  }
+
+  /* Section */
+  .section{margin-top:20px}
+  .section-header{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:8px;gap:8px;
+  }
+  .section-title{
+    font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);display:flex;align-items:center;gap:6px;
+  }
+  .section-prog{
+    font-size:11px;font-weight:700;color:var(--faint);white-space:nowrap;
+  }
+  .section-bar{height:3px;border-radius:99px;background:var(--border);margin-bottom:10px}
+  .section-fill{height:100%;border-radius:99px;background:var(--accent);transition:width .3s}
+
+  /* Items */
+  .items{display:flex;flex-direction:column;gap:2px}
+  .item{
+    display:flex;align-items:flex-start;gap:12px;
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:11px 14px;cursor:pointer;transition:background .15s,border-color .15s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .item:active{background:var(--surface-2)}
+  .item.done{background:var(--surface-2);border-color:transparent}
+  .item.done .item-title{text-decoration:line-through;color:var(--done-ink)}
+  .item.done .item-note{color:var(--faint)}
+  .cb{
+    width:20px;height:20px;border-radius:6px;border:2px solid var(--border-strong);
+    background:var(--ground);flex-shrink:0;margin-top:1px;
+    display:flex;align-items:center;justify-content:center;transition:all .15s;
+  }
+  .item.done .cb{background:var(--accent);border-color:var(--accent)}
+  .cb svg{display:none}
+  .item.done .cb svg{display:block}
+  .item-body{flex:1;min-width:0}
+  .item-title{font-size:14px;font-weight:600;color:var(--ink);transition:color .15s}
+  .item-note{font-size:12px;color:var(--muted);margin-top:1px}
+  .badge-done{
+    font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    background:var(--green-soft);color:var(--green);border-radius:99px;padding:1px 7px;
+    flex-shrink:0;margin-top:3px;
+  }
+
+  /* Pre-done section (ordered/booked) */
+  .section.ref .item{opacity:.75}
+  .section.ref .item.done .cb{background:var(--green);border-color:var(--green)}
+
+  /* Reset */
+  .reset-btn{
+    display:block;margin:28px auto 0;border:1px solid var(--border-strong);
+    background:transparent;color:var(--faint);border-radius:999px;
+    padding:8px 20px;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+
+  /* Stand */
+  .stand{text-align:center;font-size:11px;color:var(--faint);margin-top:24px}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="hrow">
+      <div>
+        <div class="eyebrow">COUNTRY HIGH · CREW</div>
+        <div class="title">Packliste <span class="sub">Mountain Spirit '26 · 08.08.2026</span></div>
+      </div>
+      <button class="themebtn" id="themebtn" onclick="toggleTheme()">🌙 DARK</button>
+    </div>
+    <a class="backlink" href="/">← Running Order</a>
+  </header>
+
+  <div class="summary">
+    <div class="summary-row">
+      <span class="summary-label">Offene Punkte</span>
+      <span class="summary-count" id="sumCount">—</span>
+    </div>
+    <div class="summary-row" style="gap:10px">
+      <div class="progress-bar"><div class="progress-fill" id="sumBar" style="width:0%"></div></div>
+      <span style="font-size:12px;font-weight:700;color:var(--accent)" id="sumPct">0%</span>
+    </div>
+    <div class="complete-msg" id="completeMsg">🎉 Alles bereit — let's go Mountain Spirit!</div>
+  </div>
+
+  <!-- ─── 1. DRUCKEN & LAMINIEREN ─────────────────────────────── -->
+  <div class="section" id="s-druck">
+    <div class="section-header">
+      <div class="section-title">🖨️ Drucken &amp; Laminieren</div>
+      <div class="section-prog" id="sp-druck"></div>
+    </div>
+    <div class="section-bar"><div class="section-fill" id="sf-druck" style="width:0%"></div></div>
+    <div class="items">
+      <div class="item" onclick="toggle(this)" data-id="dr1">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Anleitung Tattoo-Kärtchen</div>
+          <div class="item-note">WEAR YOUR STAR · A6 · DE + EN · Design ✅ fertig → drucken + laminieren</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="dr2">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Artist Badges</div>
+          <div class="item-note">Design ✅ fertig · 200g Fotokarton · laminieren A6 · lochen · Lanyard</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="dr3">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Crew Badges</div>
+          <div class="item-note">Design ✅ fertig · 200g Fotokarton · laminieren A6 · lochen · Lanyard</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="dr4">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Menükarte</div>
+          <div class="item-note">Laminiert · A5 · für Bistro Birg</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="dr5">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Artist-Voucher</div>
+          <div class="item-note">Canva-Vorlage → drucken · für Tobi-Briefing</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="dr6">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">QR-Code Tanzwunschliste</div>
+          <div class="item-note">Für Tischkarten / Beschilderung FloorCast</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="dr7">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Schilder (WC, Wegweiser etc.)</div>
+          <div class="item-note">Beschilderung auf Birg · laminieren empfohlen (Wind)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 2. GÄSTE-SÄCKLI ─────────────────────────────────────── -->
+  <div class="section" id="s-saeckli">
+    <div class="section-header">
+      <div class="section-title">🎒 Gäste-Säckli zusammenstellen</div>
+      <div class="section-prog" id="sp-saeckli"></div>
+    </div>
+    <div class="section-bar"><div class="section-fill" id="sf-saeckli" style="width:0%"></div></div>
+    <div class="items">
+      <div class="item" onclick="toggle(this)" data-id="sa1">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Jutesäckchen befüllen (×~80 Stk.)</div>
+          <div class="item-note">Natur · je 1× Tattoo-Kärtchen, Tattoo, Erfrischungstuch, Lollipop, Traubenzucker, Tombola-Los</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="sa2">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">OPP-Tütchen vorbereiten</div>
+          <div class="item-note">Tattoo + Kärtchen + Erfrischungstuch je in 1 Tütchen einschweissen · Sternaufkleber drauf</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="sa3">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Tombola-Lose nummerieren / zuweisen</div>
+          <div class="item-note">1 Los pro Gast · Schüssel kommt Freitag mit auf die Birg</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="sa4">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Tombola-Preise bereitstellen</div>
+          <div class="item-note">Hauptpreis (geheim) + Event-Plätze (Boot Camp / Dance Fever) · Ziehung ~15:20</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 3. MATERIAL & DEKO ──────────────────────────────────── -->
+  <div class="section" id="s-mat">
+    <div class="section-header">
+      <div class="section-title">🎀 Material &amp; Deko</div>
+      <div class="section-prog" id="sp-mat"></div>
+    </div>
+    <div class="section-bar"><div class="section-fill" id="sf-mat" style="width:0%"></div></div>
+    <div class="items">
+      <div class="item" onclick="toggle(this)" data-id="m1">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">RollUps</div>
+          <div class="item-note">Aus Lager · Anzahl prüfen · Transport Freitag Materialgondel</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="m2">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Deko-Material</div>
+          <div class="item-note">Blumen · Tischdekorationen · alles was Renata + Marlies für Tische brauchen</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="m3">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Tombola-Schüssel / Behälter</div>
+          <div class="item-note">Kommt Freitag mit auf die Birg (nicht erst mit Nicole/Barbara)</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="m4">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Armbändali (= Bahntickets Gäste)</div>
+          <div class="item-note">Via Heike · an Nicole + Barbara übergeben Sa 07:33 Stechelberg</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="m5">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Check-In Material für Nicole + Barbara</div>
+          <div class="item-note">Tickets · Armbändeli · Säckli · Badges · Tombola-Lose → Übergabe Sa 07:33 Stechelberg</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="m6">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Selfiestick</div>
+          <div class="item-note">Für Johnny · Crowd-Foto 12:17 nach Begrüssungsrede</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="m7">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Sonnenblumen — Transport</div>
+          <div class="item-note">Marlies schneidet Fr 07.08. in Gwatt · Behälter für Transport bereit?</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="m8">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Parktickets (14 Stk.)</div>
+          <div class="item-note">Heike gibt Kim persönlich am Freitag vor Ort · nicht vorab</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 4. TECHNIK & PA ─────────────────────────────────────── -->
+  <div class="section" id="s-tech">
+    <div class="section-header">
+      <div class="section-title">🎵 Technik &amp; PA</div>
+      <div class="section-prog" id="sp-tech"></div>
+    </div>
+    <div class="section-bar"><div class="section-fill" id="sf-tech" style="width:0%"></div></div>
+    <div class="items">
+      <div class="item" onclick="toggle(this)" data-id="t1">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">PA-Anlage Richi</div>
+          <div class="item-note">Geht Freitag mit Materialgondel hoch · Richi verantwortlich</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="t2">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Kabel &amp; Adapter</div>
+          <div class="item-note">Richi verantwortlich · Sierd hilft beim Aufbau Sa 08:45</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="t3">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">FloorCast — Tanzliste laden &amp; testen</div>
+          <div class="item-note">Richi: floorcast.onrender.com/dj · Tanzwünsche vor Event einspielen · Sa 09:10</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="t4">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Photobooth aufstellen</div>
+          <div class="item-note">Dolder Pro Rainbow · Kim + Marion Sa 08:45 · Vertrag + Rechnung ✅ bezahlt</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 5. CONTENT & FOTO ────────────────────────────────────── -->
+  <div class="section" id="s-foto">
+    <div class="section-header">
+      <div class="section-title">📸 Content &amp; Foto</div>
+      <div class="section-prog" id="sp-foto"></div>
+    </div>
+    <div class="section-bar"><div class="section-fill" id="sf-foto" style="width:0%"></div></div>
+    <div class="items">
+      <div class="item" onclick="toggle(this)" data-id="f1">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Foto &amp; Video Briefing an Tobi + Nicole senden</div>
+          <div class="item-note">Briefing-Dokument vorhanden (foto-video-briefing-tobi.md)</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="f2">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Kamera(s) aufladen</div>
+          <div class="item-note">Inkl. Backup-Speicher (SD-Karten)</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="f3">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Powerbank aufladen</div>
+          <div class="item-note">Für Stories den ganzen Tag · Handy-Akku schonen</div>
+        </div>
+      </div>
+      <div class="item" onclick="toggle(this)" data-id="f4">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body">
+          <div class="item-title">Story-Plan / Shot-Liste Tobi übergeben</div>
+          <div class="item-note">Artist-Porträts 10:41 · Crew-Foto 10:48 · Crowd-Foto 12:17 · Coverage ganze Veranstaltung</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 6. BESTELLT ✅ (Referenz) ───────────────────────────── -->
+  <div class="section ref" id="s-bestellt">
+    <div class="section-header">
+      <div class="section-title">✅ Bestellt &amp; geliefert</div>
+      <div class="section-prog" id="sp-bestellt"></div>
+    </div>
+    <div class="section-bar"><div class="section-fill" id="sf-bestellt" style="width:0%"></div></div>
+    <div class="items">
+      <div class="item done" onclick="toggle(this)" data-id="b1">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Jutesäckchen natur (120 Stk.)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b2">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Stern-Tattoos Outline (2× 5er-Pack)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b3">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">OPP-Tütchen 8×12 cm (200 Stk.)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b4">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Lollipops (200 Stk.) + Traubenzucker (~160 Stk.)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b5">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Tombola-Lose 1–100 (Röllchen)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b6">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Erfrischungstücher PAPSTAR Citro (250 Stk.)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b7">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Laminierfolien A5 + A6 (je 100 Stk.)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b8">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Ausweishalter (50 Stk.) + Fotokarton 200g + Druckerpapier</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b9">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Stern-Aufkleber schwarz (Rolle)</div><div class="item-note">Amazon ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="b10">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">HP 220X Toner CMYK</div><div class="item-note">Inkolor.ch ✅</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── 7. ORGANISIERT ✅ (Referenz) ────────────────────────── -->
+  <div class="section ref" id="s-org">
+    <div class="section-header">
+      <div class="section-title">🏔️ Organisiert &amp; gebucht</div>
+      <div class="section-prog" id="sp-org"></div>
+    </div>
+    <div class="section-bar"><div class="section-fill" id="sf-org" style="width:0%"></div></div>
+    <div class="items">
+      <div class="item done" onclick="toggle(this)" data-id="o1">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Photobooth Dolder Pro Rainbow</div><div class="item-note">die-fotokabine.ch · CHF 387 · Vertrag ✅ · bezahlt ✅ (22.07.2026)</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="o2">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Hotelzimmer Alpenruh Mürren</div><div class="item-note">Kim · Johnny+Daniel DZ · Richi+Marion DZ · Fr→Sa ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="o3">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Bahntickets Fr Stechelberg→Mürren</div><div class="item-note">Heike hinterlegt an Kasse · Johnny+Daniel + Richi+Marion ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="o4">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">14 Parktickets (Ausfahrt)</div><div class="item-note">Heike gibt Kim persönlich Fr vor Ort ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="o5">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Bühne + Strohballen + Strom (SHB)</div><div class="item-note">SHB baut auf · analog 2025 ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="o6">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Sonnenschirme + Hocker (SHB)</div><div class="item-note">SHB organisiert ✅</div></div>
+      </div>
+      <div class="item done" onclick="toggle(this)" data-id="o7">
+        <div class="cb"><svg width="12" height="9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1,4.5 4.5,8 11,1"/></svg></div>
+        <div class="item-body"><div class="item-title">Artists Brunch Schilthorn — Reservation</div><div class="item-note">Via Heike · Sonntag 11:00 Piz Gloria ✅</div></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="reset-btn" onclick="resetAll()">↺ Alle zurücksetzen</button>
+  <div class="stand">Stand 03.08.2026 · laufend ergänzen</div>
+</div>
+
+<script>
+  const STORE = "ms26_pack";
+
+  function loadState(){
+    try{ return JSON.parse(localStorage.getItem(STORE))||{}; }catch(e){ return {}; }
+  }
+  function saveState(s){ localStorage.setItem(STORE, JSON.stringify(s)); }
+
+  function toggle(el){
+    const id = el.dataset.id;
+    el.classList.toggle("done");
+    const s = loadState();
+    s[id] = el.classList.contains("done");
+    saveState(s);
+    updateAll();
+  }
+
+  function initState(){
+    const s = loadState();
+    document.querySelectorAll(".item[data-id]").forEach(el => {
+      const id = el.dataset.id;
+      if(id in s){
+        if(s[id]) el.classList.add("done");
+        else el.classList.remove("done");
+      }
+    });
+    updateAll();
+  }
+
+  function updateSection(secId, progId, fillId){
+    const sec = document.getElementById(secId);
+    if(!sec) return;
+    const items = sec.querySelectorAll(".item[data-id]");
+    const done = sec.querySelectorAll(".item.done").length;
+    const total = items.length;
+    const pct = total ? Math.round(done/total*100) : 0;
+    const el = document.getElementById(progId);
+    if(el) el.textContent = done + "/" + total;
+    const fill = document.getElementById(fillId);
+    if(fill) fill.style.width = pct + "%";
+  }
+
+  function updateAll(){
+    const sections = [
+      ["s-druck","sp-druck","sf-druck"],
+      ["s-saeckli","sp-saeckli","sf-saeckli"],
+      ["s-mat","sp-mat","sf-mat"],
+      ["s-tech","sp-tech","sf-tech"],
+      ["s-foto","sp-foto","sf-foto"],
+      ["s-bestellt","sp-bestellt","sf-bestellt"],
+      ["s-org","sp-org","sf-org"],
+    ];
+    sections.forEach(([s,p,f]) => updateSection(s,p,f));
+
+    // global progress (exclude ref sections)
+    const mainItems = document.querySelectorAll(".section:not(.ref) .item[data-id]");
+    const mainDone  = document.querySelectorAll(".section:not(.ref) .item.done").length;
+    const total = mainItems.length;
+    const pct = total ? Math.round(mainDone/total*100) : 0;
+    document.getElementById("sumCount").textContent = (total-mainDone) + " offen · " + mainDone + " erledigt";
+    document.getElementById("sumBar").style.width = pct + "%";
+    document.getElementById("sumPct").textContent = pct + "%";
+    document.getElementById("completeMsg").style.display = pct===100 ? "block" : "none";
+  }
+
+  function resetAll(){
+    if(!confirm("Alle Häkchen zurücksetzen?")) return;
+    localStorage.removeItem(STORE);
+    document.querySelectorAll(".item:not(.ref .item)").forEach(el => el.classList.remove("done"));
+    // re-init ref sections as done
+    document.querySelectorAll(".section.ref .item").forEach(el => el.classList.add("done"));
+    const s = {};
+    document.querySelectorAll(".section.ref .item[data-id]").forEach(el => { s[el.dataset.id]=true; });
+    saveState(s);
+    updateAll();
+  }
+
+  // Theme
+  function toggleTheme(){
+    const r = document.documentElement;
+    const cur = r.getAttribute("data-theme");
+    const next = cur==="dark"?"light":"dark";
+    r.setAttribute("data-theme", next);
+    document.getElementById("themebtn").textContent = next==="dark" ? "☀️ LIGHT" : "🌙 DARK";
+    localStorage.setItem("ms26_theme", next);
+  }
+  (function initTheme(){
+    const t = localStorage.getItem("ms26_theme");
+    if(t){ document.documentElement.setAttribute("data-theme",t); document.getElementById("themebtn").textContent = t==="dark"?"☀️ LIGHT":"🌙 DARK"; }
+  })();
+
+  initState();
+</script>
+</html>
