@@ -356,11 +356,11 @@
       [930,"Video: Birg (Story)",["Kim"],"Birg","","video"],
       [975,"Bahnfahrt Birg → Mürren",["Marlies","Kim","Heike","Richi","Marion"],"Birg → Mürren","","normal"],
       [975,"Bahnfahrt Stechelberg → Mürren",["Johnny","Daniel"],"Stechelberg → Mürren","Bahnticket an Kasse Stechelberg hinterlegt","normal"],
-      [1005,"Apéro Terrasse",["Marlies","Kim","Richi","Marion","Johnny","Daniel"],"Mürren","","key"],
+      [1005,"Apéro Terrasse",["Marlies","Kim","Richi","Marion","Johnny"],"Mürren","","key"],
       [1020,"Video: Warm-Up 🍹 (Story)",["Kim"],"Mürren","","video"],
       [1065,"Bahnfahrt Mürren → Stechelberg",["Kim","Marlies"],"Mürren → Stechelberg","","normal"],
       [1080,"Rückfahrt",["Kim","Marlies"],"Stechelberg","Kim → Aris · Marlies → Wimmis","normal"],
-      [1140,"Abendessen",["Richi","Marion","Johnny","Daniel"],"Alpenruh","Halbpension","normal"]
+      [1140,"Abendessen",["Richi","Marion","Johnny"],"Alpenruh","Halbpension","normal"]
     ],
     so: [
       [600,"Frühstück Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh Mürren","+ Daniel, Markus, Markus · vor der Abfahrt","normal"],
@@ -378,20 +378,20 @@
       [510,"Gondel Mürren → Birg",["Heike","Kim","Marlies","Renata","Michaela","Susanne","Karin","Sierd","Olga","Richi","Marion"],"Mürren → Birg","08:30","normal"],
       [520,"Ankunft Set-Up Crew Birg",["Heike","Kim","Marlies","Renata","Michaela","Susanne","Karin","Sierd","Olga","Richi","Marion"],"Birg","","normal"],
       [525,"Kaffee & Gipfeli 🥐",["Heike","Kim","Marlies","Renata","Michaela","Susanne","Karin","Sierd","Olga","Richi","Marion"],"Bistro Birg","Sponsoring SHB","normal"],
-      [530,"Gondel Stechelberg → Mürren",["Priska","Sabine","Markus","Markus"],"Stechelberg → Mürren","08:50","normal"],
+      [530,"Gondel Stechelberg → Mürren",["Priska","Sabine"],"Stechelberg → Mürren","08:50","normal"],
       [535,"Kurzes Team Briefing",["Kim"],"Birg","","normal"],
       [540,"Deko Team",["Renata","Marlies"],"Birg","Tische einrichten & dekorieren · Beschilderungen · Deko WC","normal"],
       [540,"Shop Team",["Olga","Karin","Susanne","Michaela","Ruth"],"Birg","Shop einrichten","normal"],
       [540,"PA / Musikanlage aufbauen",["Richi","Sierd","Heike"],"Birg","PA steht seit Fr oben","normal"],
       [540,"Photobooth aufbauen",["Kim","Marion"],"Birg","Marion wechselt ~09:15 zum Deko Team","normal"],
-      [540,"Check-In Hotel Alpenruh (Gepäck Abgabe)",["Priska","Sabine","Markus","Markus"],"Mürren","","normal"],
+      [540,"Check-In Hotel Alpenruh (Gepäck Abgabe)",["Priska","Sabine"],"Mürren","","normal"],
       [560,"Briefing Gastro Team",["Kim","Heike"],"Birg","","normal"],
-      [570,"Gondel Mürren → Birg",["Johnny","Priska","Sabine","Daniel","Markus","Markus"],"Mürren → Birg","09:30 · Artists + Begleitpersonen","normal"],
+      [570,"Gondel Mürren → Birg",["Johnny","Priska","Sabine"],"Mürren → Birg","09:30","normal"],
       [570,"Koordination Check-In Aufbau",["Heike"],"Stechelberg","Schilthornbahn","normal"],
       [570,"Gondel Stechelberg → Birg",["Tobi"],"Stechelberg → Birg","09:30","normal"],
       [575,"Video Story — Fahrt der Artists zur Birg",["Johnny"],"Gondel","Storyformat · an Kim senden","video"],
       [575,"Story posten",["Kim"],"Birg","Artists-Fahrt hoch","normal"],
-      [580,"Ankunft Birg — Artists",["Johnny","Priska","Sabine","Daniel","Markus","Markus"],"Birg","09:40","normal"],
+      [580,"Ankunft Birg — Artists",["Johnny","Priska","Sabine"],"Birg","09:40","normal"],
       [600,"Sound Check",["Richi","Johnny","Priska","Sabine"],"Birg","","key"],
       [600,"Treffpunkt Talstation — Check-In Team",["Nicole","Barbara"],"Stechelberg","Aufbau Check-In","normal"],
       [600,"Tobi trifft auf Birg ein",["Tobi","Kim"],"Birg","","normal"],
@@ -436,8 +436,7 @@
 
   const CREW_MEMBERS = ["Kim","Marlies","Renata","Ruth","Nicole","Olga","Karin","Sierd","Susanne","Michaela","Marion","Richi"];
   const ARTISTS = ["Johnny","Priska","Sabine","Richi"];
-  const BEGLEIT = ["Daniel","Markus","Marion"];
-  const CREW = ["Kim","Marlies","Renata","Ruth","Nicole","Olga","Karin","Sierd","Susanne","Michaela","Marion","Richi","Johnny","Priska","Sabine","Daniel","Markus","Barbara","Heike","Tobi"];
+  const CREW = ["Kim","Marlies","Renata","Ruth","Nicole","Olga","Karin","Sierd","Susanne","Michaela","Marion","Richi","Johnny","Priska","Sabine","Barbara","Heike","Tobi"];
   const EVENT_DAYS = { "2026-08-07": "fr", "2026-08-08": "sa", "2026-08-09": "so" };
 
   let day = "sa";
@@ -454,7 +453,6 @@
     if(person === "ALLE") return true;
     if(person === "GRP:Crew") return who.includes("ALLE") || who.some(w => CREW_MEMBERS.includes(w));
     if(person === "GRP:Artists") return who.some(w => ARTISTS.includes(w));
-    if(person === "GRP:Begleit") return who.some(w => BEGLEIT.includes(w));
     return who.includes(person) || (who.includes("ALLE") && CREW_MEMBERS.includes(person));
   }
 
@@ -465,7 +463,6 @@
       mk("ALLE","Alle") +
       mk("GRP:Crew","Crew"," chip-grp") +
       mk("GRP:Artists","Artists"," chip-grp") +
-      mk("GRP:Begleit","Begleit"," chip-grp") +
       `<span class="chip-sep"></span>` +
       CREW.map(c=>mk(c,c)).join("");
   }
