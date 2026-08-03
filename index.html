@@ -592,7 +592,7 @@
     }
   };
 
-  function t(key){ return T[lang]?.[key] ?? T.de[key] ?? key; }
+  function tr(key){ return T[lang]?.[key] ?? T.de[key] ?? key; }
 
   function entryTitle(item){
     if(lang !== "en") return item[1];
@@ -609,7 +609,7 @@
     const btn = document.getElementById("langbtn");
     btn.textContent = l === "de" ? "🇬🇧 EN" : "🇩🇪 DE";
     btn.classList.toggle("active", l === "en");
-    document.documentElement.style.setProperty("--now-label", '"' + t("jetzt") + '"');
+    document.documentElement.style.setProperty("--now-label", '"' + tr("jetzt") + '"');
     updateDayButtons();
     buildChips();
     render();
@@ -617,13 +617,13 @@
   function toggleLang(){ setLang(lang === "de" ? "en" : "de"); }
 
   function updateDayButtons(){
-    document.getElementById("btn-fr").innerHTML = t("fr") + '<span class="d2">' + t("frSub") + "</span>";
-    document.getElementById("btn-sa").innerHTML = t("sa") + '<span class="d2">' + t("saSub") + "</span>";
-    document.getElementById("btn-so").innerHTML = t("so") + '<span class="d2">' + t("soSub") + "</span>";
+    document.getElementById("btn-fr").innerHTML = tr("fr") + '<span class="d2">' + tr("frSub") + "</span>";
+    document.getElementById("btn-sa").innerHTML = tr("sa") + '<span class="d2">' + tr("saSub") + "</span>";
+    document.getElementById("btn-so").innerHTML = tr("so") + '<span class="d2">' + tr("soSub") + "</span>";
     const h = document.getElementById("tl-head-h2");
-    if(h) h.textContent = t("ablauf");
+    if(h) h.textContent = tr("ablauf");
     const nc = document.getElementById("notfall-toggle-span");
-    if(nc) nc.textContent = t("notfall");
+    if(nc) nc.textContent = tr("notfall");
   }
   // ── End language system ──────────────────────────────────────────────────
   const CREW_MEMBERS = ["Kim","Marlies","Renata","Ruth","Nicole","Olga","Karin","Sierd","Susanne","Michaela","Marion","Richi"];
@@ -660,7 +660,7 @@
     else if(person === "GRP:SHB") members = SHB_MEMBERS;
     else members = CREW;
     row.innerHTML =
-      mk("ALLE",t("alle")) +
+      mk("ALLE",tr("alle")) +
       mk("GRP:Crew","🤠 Crew"," chip-grp") +
       mk("GRP:Artists","🎤 Artists"," chip-grp") +
       mk("GRP:SHB","🏔 SHB"," chip-grp") +
@@ -698,14 +698,14 @@
   function updateLiveUI(){
     const btn = document.getElementById("livebtn");
     btn.classList.toggle("on", liveMode);
-    document.getElementById("livetext").textContent = liveMode ? t("live") : t("liveStart");
+    document.getElementById("livetext").textContent = liveMode ? tr("live") : tr("liveStart");
     document.getElementById("scrub").value = nowMin();
     document.getElementById("scrubval").textContent = fmt(nowMin());
   }
 
   function heroCard(cls,label,tag,item,extra){
     const [min,title,who,place,note] = item;
-    const whoTxt = who.includes("ALLE") ? t("ganzeCrew") : who.join(", ");
+    const whoTxt = who.includes("ALLE") ? tr("ganzeCrew") : who.join(", ");
     const htitle = entryTitle(item);
     const hnote = entryNotes(item);
     return `<div class="card ${cls}">
@@ -732,7 +732,7 @@
     if(EVENT_DAYS[tk]){ pv.classList.remove("show"); }
     else {
       pv.classList.add("show");
-      pv.innerHTML = liveMode ? t("prevLive") : t("prevSlide").replace("{t}", fmt(t));
+      pv.innerHTML = liveMode ? tr("prevLive") : tr("prevSlide").replace("{t}", fmt(t));
     }
 
     // hero — nur am Eventtag anzeigen
@@ -742,16 +742,16 @@
       const cur = curIdx>=0 ? items[curIdx] : null;
       const nxt = nextIdx>=0 ? items[nextIdx] : null;
       if(cur){
-        html += heroCard("now",t("heroNow"), fmt(cur[0]), cur);
+        html += heroCard("now",tr("heroNow"), fmt(cur[0]), cur);
       } else {
-        html += `<div class="card now"><div class="lbl now">${t("startklar")}</div><div class="idle">${t("startMsg")} <b>${fmt(items[0][0])}</b> ${t("startIn")} ${fmtDur(items[0][0]-t)}.</div></div>`;
+        html += `<div class="card now"><div class="lbl now">${tr("startklar")}</div><div class="idle">${tr("startMsg")} <b>${fmt(items[0][0])}</b> ${tr("startIn")} ${fmtDur(items[0][0]-t)}.</div></div>`;
       }
       if(nxt){
         const delta = nxt[0]-t;
         const cd = `<div class="hero-note">${lang==="de"?"In":"In"} <span class="countdown">${fmtDur(delta)}</span></div>`;
-        html += heroCard("next",t("heroNext"), fmt(nxt[0]), nxt, cd);
+        html += heroCard("next",tr("heroNext"), fmt(nxt[0]), nxt, cd);
       } else {
-        html += `<div class="card next"><div class="lbl next">${t("heroNext")}</div><div class="idle">${t("endMsg")}</div></div>`;
+        html += `<div class="card next"><div class="lbl next">${tr("heroNext")}</div><div class="idle">${tr("endMsg")}</div></div>`;
       }
     }
     hero.innerHTML = html;
@@ -765,7 +765,7 @@
       if(!match && person!=="ALLE"){ /* keep but dim */ }
       const isNow = i===curIdx;
       const isPast = min <= t && !isNow;
-      const whoTxt = who.includes("ALLE") ? t("ganzeCrew") : who.join(", ");
+      const whoTxt = who.includes("ALLE") ? tr("ganzeCrew") : who.join(", ");
       const dispTitle = entryTitle(it);
       const dispNote = entryNotes(it);
       let cls = "row";
@@ -794,7 +794,7 @@
   }
 
   function fmtDur(mins){
-    if(mins<=0) return t("done");
+    if(mins<=0) return tr("done");
     const h=Math.floor(mins/60), m=mins%60;
     return h>0 ? `${h} h ${pad(m)} min` : `${m} min`;
   }
@@ -832,7 +832,7 @@
     } else {
       livebar.style.display = "none";
       evtnote.classList.add("show");
-      evtnote.innerHTML = t("eventNote");
+      evtnote.innerHTML = tr("eventNote");
     }
 
     setLang("de");
