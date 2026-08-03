@@ -469,7 +469,7 @@
     de: {
       alle:"Alle", ablauf:"Ablauf",
       jetzt:"JETZT", heroNow:"Jetzt", heroNext:"Als nächstes",
-      ganzeCrew:"Ganze Crew", live:"Live", liveStart:"Live starten",
+      ganzeCrew:"Ganze Crew", alleArtists:"Alle Artists", live:"Live", liveStart:"Live starten",
       uhrzeit:"Uhrzeit", done:"jetzt",
       startklar:"Startklar", startMsg:"Programm startet um", startIn:"— noch",
       endMsg:"Das war’s — schöner Tag, Crew. \U0001f920",
@@ -484,7 +484,7 @@
     en: {
       alle:"All", ablauf:"Schedule",
       jetzt:"NOW", heroNow:"Now", heroNext:"Next up",
-      ganzeCrew:"Full Crew", live:"Live", liveStart:"Go Live",
+      ganzeCrew:"Full Crew", alleArtists:"All Artists", live:"Live", liveStart:"Go Live",
       uhrzeit:"Time", done:"now",
       startklar:"Ready to go", startMsg:"Program starts at", startIn:"— in",
       endMsg:"That’s a wrap — great day, crew. \U0001f920",
@@ -595,6 +595,22 @@
   };
 
   function tr(key){ return T[lang]?.[key] ?? T.de[key] ?? key; }
+
+  function formatWho(who){
+    if(who.includes("ALLE")) return tr("ganzeCrew");
+    const hasAllCrew    = CREW_MEMBERS.every(m => who.includes(m));
+    const hasAllArtists = ARTISTS.every(m => who.includes(m));
+    if(hasAllCrew && hasAllArtists) return tr("ganzeCrew") + " & " + tr("alleArtists");
+    if(hasAllCrew){
+      const extras = who.filter(w => !CREW_MEMBERS.includes(w));
+      return extras.length ? tr("ganzeCrew") + ", " + extras.join(", ") : tr("ganzeCrew");
+    }
+    if(hasAllArtists){
+      const extras = who.filter(w => !ARTISTS.includes(w));
+      return extras.length ? tr("alleArtists") + ", " + extras.join(", ") : tr("alleArtists");
+    }
+    return who.join(", ");
+  }
 
   function entryTitle(item){
     if(lang !== "en") return item[1];
@@ -707,7 +723,7 @@
 
   function heroCard(cls,label,tag,item,extra){
     const [min,title,who,place,note] = item;
-    const whoTxt = who.includes("ALLE") ? tr("ganzeCrew") : who.join(", ");
+    const whoTxt = formatWho(who);
     const htitle = entryTitle(item);
     const hnote = entryNotes(item);
     return `<div class="card ${cls}">
@@ -767,7 +783,7 @@
       if(!match && person!=="ALLE"){ /* keep but dim */ }
       const isNow = i===curIdx;
       const isPast = min <= t && !isNow;
-      const whoTxt = who.includes("ALLE") ? tr("ganzeCrew") : who.join(", ");
+      const whoTxt = formatWho(who);
       const dispTitle = entryTitle(it);
       const dispNote = entryNotes(it);
       let cls = "row";
