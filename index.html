@@ -104,8 +104,10 @@
   .daytoggle button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
   .daytoggle button[aria-pressed="true"] .d2 { color: var(--surface); opacity: .7; }
 
-  .chiprow { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .chiprow { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-wrap: wrap; }
   .chiprow::-webkit-scrollbar { display: none; }
+  .chip-sep { width: 100%; height: 0; flex-basis: 100%; }
+  .chip-grp { font-weight: 700; border-style: dashed; }
   .chip {
     flex-shrink: 0; border: 1px solid var(--border-strong); background: var(--surface);
     color: var(--muted); border-radius: 999px; padding: 6px 13px; cursor: pointer;
@@ -361,11 +363,11 @@
       [1140,"Abendessen",["Richi","Marion","Johnny","Daniel"],"Alpenruh","Halbpension","normal"]
     ],
     so: [
-      [600,"Frühstück Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh Mürren","+ Daniel, Markus, Lina · vor der Abfahrt","normal"],
-      [615,"Besammlung Mürren",["Johnny","Priska","Sabine"],"Mürren","+ Daniel, Markus, Lina · Armbändel + Artist-Badge = Bahnticket","normal"],
-      [620,"Gondel hoch — Schilthorn",["Johnny","Priska","Sabine"],"Mürren → Schilthorn","+ Daniel, Markus, Lina · Piz Gloria 2'970 m","normal"],
-      [660,"Brunch Piz Gloria",["Johnny","Priska","Sabine"],"Schilthorn · Piz Gloria","+ Daniel, Markus, Lina · 6 Personen · reserviert via Heike","key"],
-      [780,"Individuelle Heimreise",["Johnny","Priska","Sabine"],"Schilthorn → Stechelberg","+ Daniel, Markus, Lina · ab ~13:00 oder nach Wahl · Armbändel + Artist-Badge gilt als Bahnticket","normal"]
+      [600,"Frühstück Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh Mürren","+ Daniel, Markus, Markus · vor der Abfahrt","normal"],
+      [615,"Besammlung Mürren",["Johnny","Priska","Sabine"],"Mürren","+ Daniel, Markus, Markus · Armbändel + Artist-Badge = Bahnticket","normal"],
+      [620,"Gondel hoch — Schilthorn",["Johnny","Priska","Sabine"],"Mürren → Schilthorn","+ Daniel, Markus, Markus · Piz Gloria 2'970 m","normal"],
+      [660,"Brunch Piz Gloria",["Johnny","Priska","Sabine"],"Schilthorn · Piz Gloria","+ Daniel, Markus, Markus · 6 Personen · reserviert via Heike","key"],
+      [780,"Individuelle Heimreise",["Johnny","Priska","Sabine"],"Schilthorn → Stechelberg","+ Daniel, Markus, Markus · ab ~13:00 oder nach Wahl · Armbändel + Artist-Badge gilt als Bahnticket","normal"]
     ],
     sa: [
       [450,"Besammlung Setup-Crew (Birg)",["Karin","Sierd","Olga","Renata","Michaela","Susanne","Ruth","Marlies"],"Talstation Stechelberg","fahren hoch auf die Birg","normal"],
@@ -428,11 +430,14 @@
       [1140,"Letzte Country High Gondel",["Gäste"],"Birg → Stechelberg","","normal"],
       [1200,"Bahnfahrt Stechelberg (Crew)",["ALLE"],"Birg → Stechelberg","mit SHB-Staff runter","normal"],
       [1230,"Individuelle Heimreise",["ALLE"],"","","normal"],
-      [1260,"Abendessen Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh","+ Daniel, Markus, Lina · spätestens 21:00 · Hotelgäste Sa-Nacht","normal"]
+      [1260,"Abendessen Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh","+ Daniel, Markus, Markus · spätestens 21:00 · Hotelgäste Sa-Nacht","normal"]
     ]
   };
 
-  const CREW = ["Kim","Johnny","Priska","Sabine","Richi","Marion","Marlies","Nicole","Barbara","Renata","Karin","Sierd","Olga","Heike","Michaela","Susanne","Ruth","Tobi"];
+  const CREW_MEMBERS = ["Kim","Marlies","Renata","Ruth","Nicole","Olga","Karin","Sierd","Susanne","Michaela","Marion","Richi"];
+  const ARTISTS = ["Johnny","Priska","Sabine","Richi"];
+  const BEGLEIT = ["Daniel","Markus","Marion"];
+  const CREW = ["Kim","Marlies","Renata","Ruth","Nicole","Olga","Karin","Sierd","Susanne","Michaela","Marion","Richi","Johnny","Priska","Sabine","Daniel","Markus","Barbara","Heike","Tobi"];
   const EVENT_DAYS = { "2026-08-07": "fr", "2026-08-08": "sa", "2026-08-09": "so" };
 
   let day = "sa";
@@ -445,12 +450,24 @@
   function realMin(){ const d = new Date(); return d.getHours()*60 + d.getMinutes(); }
   function todayKey(){ const d = new Date(); return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate()); }
   function nowMin(){ return liveMode ? realMin() : simMin; }
-  function rowMatches(who){ return person==="ALLE" || who.includes(person) || who.includes("ALLE"); }
+  function rowMatches(who){
+    if(person === "ALLE") return true;
+    if(person === "GRP:Crew") return who.includes("ALLE") || who.some(w => CREW_MEMBERS.includes(w));
+    if(person === "GRP:Artists") return who.some(w => ARTISTS.includes(w));
+    if(person === "GRP:Begleit") return who.some(w => BEGLEIT.includes(w));
+    return who.includes(person) || (who.includes("ALLE") && CREW_MEMBERS.includes(person));
+  }
 
   function buildChips(){
     const row = document.getElementById("chiprow");
-    const mk = (val,label) => `<button class="chip" data-p="${val}" aria-pressed="${person===val}" onclick="setPerson('${val}')">${label}</button>`;
-    row.innerHTML = mk("ALLE","Alle") + CREW.map(c=>mk(c,c)).join("");
+    const mk = (val,label,extra="") => `<button class="chip${extra}" data-p="${val}" aria-pressed="${person===val}" onclick="setPerson('${val}')">${label}</button>`;
+    row.innerHTML =
+      mk("ALLE","Alle") +
+      mk("GRP:Crew","Crew"," chip-grp") +
+      mk("GRP:Artists","Artists"," chip-grp") +
+      mk("GRP:Begleit","Begleit"," chip-grp") +
+      `<span class="chip-sep"></span>` +
+      CREW.map(c=>mk(c,c)).join("");
   }
 
   function setDay(d){
