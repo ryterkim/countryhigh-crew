@@ -318,11 +318,11 @@
       <a class="ccard" href="tel:+41796873258"><div class="cname">Kim Ryter</div><div class="crole">Country High</div><div class="cnum">+41 79 687 32 58</div></a>
       <a class="ccard" href="tel:+41797548206"><div class="cname">Nicole Abgottspon</div><div class="crole">Check-In Stechelberg</div><div class="cnum">+41 79 754 82 06</div></a>
       <a class="ccard" href="tel:+41788488451"><div class="cname">Renata Grandi</div><div class="crole">Crew Birg</div><div class="cnum">+41 78 848 84 51</div></a>
-      <a class="ccard" href="tel:+41774308182"><div class="cname">Heike Richter</div><div class="crole">Koordination Event</div><div class="cnum">+41 77 430 81 82</div></a>
       <div class="cgroup-label">SCHILTHORNBAHN</div>
       <a class="ccard" href="tel:+41792673017"><div class="cname">Robert Schneiter</div><div class="crole">Technischer Leiter</div><div class="cnum">+41 79 267 30 17</div></a>
       <a class="ccard" href="tel:+41767609010"><div class="cname">Lars Heinecke</div><div class="crole">Bistro Birg</div><div class="cnum">+41 76 760 90 10</div></a>
       <a class="ccard" href="tel:+41798772600"><div class="cname">Thomas Zumbach</div><div class="crole">Leiter Gastronomie</div><div class="cnum">+41 79 877 26 00</div></a>
+      <a class="ccard" href="tel:+41774308182"><div class="cname">Heike Richter</div><div class="crole">Koordination Event</div><div class="cnum">+41 77 430 81 82</div></a>
       <a class="ccard" href="tel:+41338266007"><div class="cname">Schilthornbahn AG</div><div class="crole">Zentrale</div><div class="cnum">+41 33 826 00 07</div></a>
       <div class="cgroup-label">HOTEL</div>
       <a class="ccard" href="tel:+41338568800"><div class="cname">Marco Fröse</div><div class="crole">Hotel Alpenruh Mürren</div><div class="cnum">+41 33 856 88 00</div></a>
@@ -338,23 +338,27 @@
 <script>
   const DATA = {
     fr: [
-      [480,"Material packen",["Kim"],"Aris","inkl. Photobooth","normal"],
-      [660,"Sonnenblumen schneiden",["Marlies"],"Gwatt","Behälter für Transport","normal"],
-      [660,"Video: Blumen (Grüassli)",["Marlies"],"Gwatt","an Kim → Story","video"],
-      [765,"Anfahrt Stechelberg",["Kim","Marlies"],"Aris → Spiez","","normal"],
-      [840,"Umladen Material",["Kim","Marlies","Heike","Richi","Marion"],"Talstation","inkl. RollUps + Hocker SHB · PA-Anlage (Richi) geht mit hoch","normal"],
-      [861,"Bahnfahrt Birg",["Kim","Marlies","Heike","Richi","Marion"],"Stechelberg → Birg","Material + PA + Tickets SHB","normal"],
-      [880,"Ankunft Birg · Ausladen",["Kim","Marlies","Heike","Richi","Marion"],"Birg","","normal"],
-      [885,"Kaffeepause / Ankommen",["Kim","Marlies"],"Bistro Birg","","normal"],
-      [900,"Aufbau Bühne (Terrasse)",["SHB"],"Birg","Tanzbühne","normal"],
-      [900,"Photobooth Aufbau + Test",["Kim","Marlies"],"Birg","im Shop","normal"],
-      [930,"Deko Toiletten + Schilder",["Marlies"],"Birg","","normal"],
-      [930,"Shop vorbereiten",["Kim","Marlies"],"Birg","Tische / Möbel","normal"],
-      [1005,"Video: Birg (1 Tag zuvor)",["Kim"],"Birg","Story","video"],
-      [1026,"Bahnfahrt runter",["Kim","Marlies","Richi","Marion"],"Birg → Mürren","Kim/Richi/Marion → Alpenruh · Marlies fährt heim","normal"],
-      [1035,"Check-In Alpenruh",["Kim","Richi","Marion"],"Mürren","⚠️ Zimmer bei Heike reservieren","normal"],
-      [1050,"Social Media Time",["Kim"],"Alpenruh","","normal"],
-      [1200,"Abendessen Alpenruh",["Kim","Johnny","Richi","Marion"],"Alpenruh","+ Daniel · spätestens 21:00 · Hotelgäste Fr-Nacht","normal"]
+      [480,"Material packen",["Kim"],"Aris","","normal"],
+      [480,"Sonnenblumen schneiden",["Marlies"],"Gwatt","Behälter für Transport","normal"],
+      [480,"Video: Blumen (Grüassli)",["Marlies"],"Gwatt","an Kim → Story","video"],
+      [720,"Abfahrt Sarnen",["Richi","Marion"],"Sarnen → Stechelberg","~1h45 Fahrzeit · Ankunft 13:45","normal"],
+      [750,"Anfahrt Region",["Johnny","Daniel"],"Matova → Stechelberg","","normal"],
+      [765,"Anfahrt Stechelberg",["Kim","Marlies"],"Aris → Spiez → Stechelberg","","normal"],
+      [825,"Treffpunkt Talstation",["Marlies","Kim","Heike","Richi","Marion"],"Stechelberg","","key"],
+      [840,"Bahntickets hinterlegen",["Heike"],"Stechelberg Kasse","Tickets für Johnny + Daniel · 16:15 Gondel","normal"],
+      [861,"Bahnfahrt Birg",["Marlies","Kim","Heike","Richi","Marion"],"Stechelberg → Birg","Material + PA","normal"],
+      [880,"Ankunft Birg · Ausladen",["Marlies","Kim","Heike","Richi","Marion"],"Birg","","normal"],
+      [885,"Kaffeepause / Ankommen",["Marlies","Kim","Heike","Richi","Marion"],"Bistro Birg","","normal"],
+      [900,"Aufbau Bühne (Terrasse)",["SHB","Heike"],"Birg","Tanzbühne","normal"],
+      [900,"Shop vorbereiten",["Marlies","Kim","Richi","Marion"],"Birg","Säubern, ordnen · Tische, Kleiderständer aufbauen","normal"],
+      [930,"Video: Birg (Story)",["Kim"],"Birg","","video"],
+      [975,"Bahnfahrt Birg → Mürren",["Marlies","Kim","Heike","Richi","Marion"],"Birg → Mürren","","normal"],
+      [975,"Bahnfahrt Stechelberg → Mürren",["Johnny","Daniel"],"Stechelberg → Mürren","Bahnticket an Kasse Stechelberg hinterlegt","normal"],
+      [1005,"Apéro Terrasse",["Marlies","Kim","Richi","Marion","Johnny","Daniel"],"Mürren","","key"],
+      [1020,"Video: Warm-Up 🍹 (Story)",["Kim"],"Mürren","","video"],
+      [1065,"Bahnfahrt Mürren → Stechelberg",["Kim","Marlies"],"Mürren → Stechelberg","","normal"],
+      [1080,"Rückfahrt",["Kim","Marlies"],"Stechelberg","Kim → Aris · Marlies → Wimmis","normal"],
+      [1140,"Abendessen",["Richi","Marion","Johnny","Daniel"],"Alpenruh","Halbpension","normal"]
     ],
     so: [
       [600,"Frühstück Alpenruh",["Johnny","Priska","Sabine"],"Alpenruh Mürren","+ Daniel, Markus, Lina · vor der Abfahrt","normal"],
