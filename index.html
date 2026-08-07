@@ -759,6 +759,7 @@
     document.getElementById("btn-fr").setAttribute("aria-pressed", d==="fr");
     document.getElementById("btn-sa").setAttribute("aria-pressed", d==="sa");
     document.getElementById("btn-so").setAttribute("aria-pressed", d==="so");
+    DATA[d].sort((a,b)=>a[0]-b[0]);
     const items = DATA[d];
     const sc = document.getElementById("scrub");
     sc.min = items[0][0]-15; sc.max = items[items.length-1][0]+30;
