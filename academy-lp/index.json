@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "academy": {
+      "type": "academy-comeback",
+      "settings": {
+        "mailchimp_action_url": "https://countryhigh.us5.list-manage.com/subscribe/post?u=56fbb84f707b1db4ba91352ad&id=5b1bdbe8e9&v_id=3740&f_id=009c40edf0",
+        "mailchimp_level_group": "group[384080]",
+        "mailchimp_gdpr_field": "gdpr[371654]",
+        "mailchimp_botfield": "b_56fbb84f707b1db4ba91352ad_5b1bdbe8e9",
+        "camp_url": "https://countryhigh.ch/pages/bootcamp"
+      }
+    }
+  },
+  "order": ["academy"]
+}
