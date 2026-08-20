@@ -1,7 +1,7 @@
 {%- comment -%}
   COUNTRY HIGH Dance Academy — Landingpage "Die Academy kommt zurück"
   ------------------------------------------------------------------
-  Shopify SECTION → sections/academy-comeback.liquid
+  {{ nav_shop }}ify SECTION → sections/academy-comeback.liquid
 
   Einbau:
     1. Diese Datei nach sections/ legen.
@@ -440,6 +440,412 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
 </style>
 
 <div class="ch-academy-comeback">
+{%- liquid
+  assign lang = localization.language.iso_code
+  case lang
+    when "en"
+      assign hero_title = "The Academy<br>is coming back"
+      assign hero_lead = "Late 2026 a new chapter begins: the COUNTRY&nbsp;HIGH Dance Academy – rebuilt, learned from everything, for you. Until then it stays our secret."
+      assign cta_first = "Be the first to know"
+      assign hero_cta2 = "Until then: dance with us live"
+      assign letter_eyebrow = "An open word"
+      assign letter_title = "A chapter closes.<br>Our journey continues."
+      assign letter_p1 = "After our first Academy season we're closing a chapter – not because the idea is over, but because what comes next is rethought from the ground up."
+      assign letter_p2 = "In this first year we learned a lot: what works well, what needs to get better and what you really need to grow as a dancer. We're taking that time now – calmly, carefully and with all our heart."
+      assign letter_p3 = "We reopen late 2026. Until then we stay in motion – and through the newsletter you stay closer than anyone else."
+      assign sign = "Your Kim"
+      assign note_label = "Good to know"
+      assign note_text = "We closed our previous Academy platform <strong>on 21 August 2026</strong>. All members were informed personally beforehand – nobody is forgotten here."
+      assign stat_txt = "dancers were part of the first season – your feedback is the foundation for everything that comes now."
+      assign hints_eyebrow = "★ Still secret"
+      assign hints_title = "Three things we can already share"
+      assign hints_lead = "We took your community feedback and wishes seriously – they flow straight into the new offering. This is how we're building the place where line dancers truly grow."
+      assign hint1_label = "01 — Structure"
+      assign hint2_label = "02 — Your pace"
+      assign hint3_label = "03 — Yours forever"
+      assign hint1_p = "You follow a clear path – with structure that really moves you forward. No endless scrolling."
+      assign hint2_p = "It meets you exactly where you are – and takes you further, step by step."
+      assign hint3_p = "What you learn with us stays yours – with no expiry date."
+      assign badge = "Relaunch late 2026"
+      assign news_eyebrow = "★ Before anyone else"
+      assign news_title = "Be there when<br>we open"
+      assign news_lead = "Just stay here in the newsletter – subscribers are the first to know when the new Academy starts and how you can be part of it."
+      assign f_fname = "First name"
+      assign f_lname = "Last name"
+      assign f_email = "Email address"
+      assign f_level_q = "Where are you right now?"
+      assign f_level_new = "Brand new – never danced"
+      assign f_consent = "Yes, send me updates about the new Academy's launch. You can unsubscribe anytime."
+      assign cta_join = "Join in"
+      assign f_note = "Free and non-binding. You can unsubscribe anytime."
+      assign live_eyebrow = "★ Until then"
+      assign live_title = "Dance with us – live"
+      assign live_lead = "Until the Academy is back, we stay in motion – where COUNTRY&nbsp;HIGH is at its best: on the dance floor."
+      assign live_caption = "Come to our events, dance with us, be part of the family."
+      assign camp_label = "Next highlight"
+      assign camp_date = "20–22 November 2026"
+      assign camp_date_note = "a whole weekend"
+      assign camp_i2 = "Hotel Terrace, Engelberg – the whole hotel just for us"
+      assign camp_i3 = "All workshops &amp; technique sessions included"
+      assign camp_i4 = "2 dance nights, 2 nights' stay &amp; great food"
+      assign camp_price_note = "per person in a double room, all inclusive"
+      assign camp_fine = "A weekend that feels like a holiday – and takes your dancing further. <strong>Places are very limited.</strong>"
+      assign camp_cta = "Book your place"
+      assign quotes_eyebrow = "Voices from the first season"
+      assign quotes_title = "This is what we build on"
+      assign faq_title = "Questions? We're here for you."
+      assign faq_q1 = "When exactly does it start again?"
+      assign faq_a1 = "Late 2026. We're deliberately not naming an exact date yet – we're taking the time to do it right. Through the newsletter you'll hear it first."
+      assign faq_q2 = "I was a member – what happens to my access?"
+      assign faq_a2 = "The previous platform closed on 21 August 2026. We informed all members personally beforehand. If you have questions about your subscription, just get in touch – we'll take care of it."
+      assign faq_q3 = "Does the newsletter cost anything?"
+      assign faq_a3 = "No – completely free and non-binding. You decide later, at your leisure, whether you want to be part of the new Academy."
+      assign faq_q4 = "What will be different about the new Academy?"
+      assign faq_a4 = "It's rethought from the ground up – based on your feedback. Clear structure instead of endless scrolling, a start exactly where you are, and content that stays yours. More stays our secret until then."
+      assign faq_q5 = "Can I meet you somewhere until then?"
+      assign faq_a5 = "Yes, absolutely. We're out and about with our events – next up at the COUNTRY&nbsp;HIGH Boot Camp from 20 to 22 November 2026 in Engelberg."
+      assign cta_title = "See you<br>on the dance floor"
+      assign cta_lead = "Stay in the newsletter and be part of the next chapter of the COUNTRY&nbsp;HIGH Dance Academy."
+      assign nav_about = "About us"
+      assign nav_story = "{{ nav_story }}"
+      assign nav_events = "{{ nav_events }}"
+      assign nav_shop = "{{ nav_shop }}"
+      assign leg_agb = "Terms"
+      assign leg_priv = "Privacy"
+      assign leg_imp = "Legal notice"
+      assign q1 = "I was thrilled the moment I read about your Academy – I'd been looking for an opportunity like this for a long time. You've built something wonderful."
+      assign qn1 = "— Gabriele Klause, Germany"
+      assign q2 = "The way the videos are built is great. You don't have to keep going back, because everything is repeated often enough and danced from the start. The sequence of videos is perfect. Thank you so much!"
+      assign qn2 = "— Thekla Luth, Germany"
+      assign q3 = "We learned Aurélie with you at the Country High Dance Academy and we're so happy to already dance and pass on this beautiful choreography."
+      assign qn3 = "— Andreas & Ulrike Gort, Switzerland"
+      assign q4 = "Good morning and a big compliment for this offering!"
+      assign qn4 = "— Salvatore Avellino, Italy"
+      assign q5 = "That was a great session, thank you so much!"
+      assign qn5 = "— Alison Thomson"
+    when "fr"
+      assign hero_title = "L'Academy<br>revient"
+      assign hero_lead = "Fin 2026 commence un nouveau chapitre : la COUNTRY&nbsp;HIGH Dance Academy – reconstruite, forte de tout ce que nous avons appris, pour toi. D'ici là, ça reste notre secret."
+      assign cta_first = "Être informé·e en premier"
+      assign hero_cta2 = "D'ici là : danse avec nous en live"
+      assign letter_eyebrow = "Un mot sincère"
+      assign letter_title = "Un chapitre se termine.<br>Notre voyage continue."
+      assign letter_p1 = "Après notre première saison d'Academy, nous fermons un chapitre – non pas parce que l'idée est terminée, mais parce que ce qui vient ensuite est repensé de fond en comble."
+      assign letter_p2 = "Cette première année nous a beaucoup appris : ce qui fonctionne, ce qui doit s'améliorer et ce dont vous avez vraiment besoin pour progresser en dansant. Nous prenons ce temps maintenant – avec calme, soin et tout notre cœur."
+      assign letter_p3 = "Nous rouvrons fin 2026. D'ici là, nous restons en mouvement – et grâce à la newsletter, tu restes plus proche que quiconque."
+      assign sign = "Ta Kim"
+      assign note_label = "Bon à savoir"
+      assign note_text = "Nous avons fermé notre ancienne plateforme Academy <strong>le 21 août 2026</strong>. Tous les membres ont été informés personnellement au préalable – personne n'est oublié."
+      assign stat_txt = "danseurs ont participé à la première saison – vos retours sont la base de tout ce qui vient maintenant."
+      assign hints_eyebrow = "★ Encore secret"
+      assign hints_title = "Trois choses que nous pouvons déjà dévoiler"
+      assign hints_lead = "Nous avons pris au sérieux vos retours et vos souhaits – ils alimentent directement la nouvelle offre. C'est ainsi que nous construisons le lieu où les danseurs de line dance grandissent vraiment."
+      assign hint1_label = "01 — Structure"
+      assign hint2_label = "02 — Ton rythme"
+      assign hint3_label = "03 — À toi pour toujours"
+      assign hint1_p = "Tu suis un chemin clair – avec une structure qui te fait vraiment progresser. Fini le scroll sans fin."
+      assign hint2_p = "Elle te prend exactement là où tu en es – et te fait avancer pas à pas."
+      assign hint3_p = "Ce que tu apprends chez nous te reste – sans date d'expiration."
+      assign badge = "Relance fin 2026"
+      assign news_eyebrow = "★ Avant tout le monde"
+      assign news_title = "Sois là quand<br>nous ouvrons"
+      assign news_lead = "Reste simplement dans la newsletter – les abonné·e·s savent avant tout le monde quand la nouvelle Academy démarre et comment en faire partie."
+      assign f_fname = "Prénom"
+      assign f_lname = "Nom"
+      assign f_email = "Adresse e-mail"
+      assign f_level_q = "Où en es-tu ?"
+      assign f_level_new = "Tout nouveau – jamais dansé"
+      assign f_consent = "Oui, envoyez-moi des infos sur le lancement de la nouvelle Academy. Désinscription à tout moment."
+      assign cta_join = "J'en suis"
+      assign f_note = "Gratuit et sans engagement. Tu peux te désinscrire à tout moment."
+      assign live_eyebrow = "★ D'ici là"
+      assign live_title = "Danse avec nous – en live"
+      assign live_lead = "Jusqu'au retour de l'Academy, nous restons en mouvement – là où COUNTRY&nbsp;HIGH est le plus beau : sur la piste de danse."
+      assign live_caption = "Viens à nos événements, danse avec nous, fais partie de la famille."
+      assign camp_label = "Prochain temps fort"
+      assign camp_date = "20 – 22 novembre 2026"
+      assign camp_date_note = "tout un week-end"
+      assign camp_i2 = "Hotel Terrace, Engelberg – tout l'hôtel rien que pour nous"
+      assign camp_i3 = "Tous les workshops &amp; sessions techniques inclus"
+      assign camp_i4 = "2 dance nights, 2 nuits &amp; une belle restauration"
+      assign camp_price_note = "par pers. en chambre double, tout compris"
+      assign camp_fine = "Un week-end qui a le goût des vacances – et fait progresser ta danse. <strong>Les places sont très limitées.</strong>"
+      assign camp_cta = "Réserve ta place"
+      assign quotes_eyebrow = "Voix de la première saison"
+      assign quotes_title = "C'est là-dessus que nous bâtissons"
+      assign faq_title = "Des questions ? Nous sommes là pour toi."
+      assign faq_q1 = "Quand exactement ça reprend ?"
+      assign faq_a1 = "Fin 2026. Nous ne donnons volontairement pas encore de date exacte – nous prenons le temps de bien faire. Via la newsletter, tu le sauras en premier."
+      assign faq_q2 = "J'étais membre – qu'advient-il de mon accès ?"
+      assign faq_a2 = "L'ancienne plateforme a fermé le 21 août 2026. Nous avons informé tous les membres personnellement au préalable. Si tu as des questions sur ton abonnement, écris-nous simplement – nous nous en occupons."
+      assign faq_q3 = "La newsletter est-elle payante ?"
+      assign faq_a3 = "Non – totalement gratuite et sans engagement. Tu décideras plus tard, tranquillement, si tu veux rejoindre la nouvelle Academy."
+      assign faq_q4 = "Qu'est-ce qui sera différent dans la nouvelle Academy ?"
+      assign faq_a4 = "Elle est repensée de fond en comble – à partir de vos retours. Une structure claire au lieu du scroll sans fin, un départ là où tu en es, et des contenus qui te restent. Le reste demeure notre secret jusque-là."
+      assign faq_q5 = "Puis-je vous rencontrer quelque part d'ici là ?"
+      assign faq_a5 = "Oui, absolument. Nous sommes en tournée avec nos événements – prochainement au COUNTRY&nbsp;HIGH Boot Camp du 20 au 22 novembre 2026 à Engelberg."
+      assign cta_title = "On se retrouve<br>sur la piste"
+      assign cta_lead = "Reste dans la newsletter et fais partie du prochain chapitre de la COUNTRY&nbsp;HIGH Dance Academy."
+      assign nav_about = "À propos"
+      assign nav_story = "Notre histoire"
+      assign nav_events = "Événements"
+      assign nav_shop = "Boutique"
+      assign leg_agb = "CGV"
+      assign leg_priv = "Confidentialité"
+      assign leg_imp = "Mentions légales"
+      assign q1 = "J'ai été immédiatement enthousiaste en découvrant votre Academy – je cherchais une telle occasion depuis longtemps. Vous avez bâti quelque chose de merveilleux."
+      assign qn1 = "— Gabriele Klause, Allemagne"
+      assign q2 = "La structure des vidéos est top. Pas besoin de revenir en arrière, car tout est répété assez souvent et dansé depuis le début. L'enchaînement des vidéos est parfait. Merci beaucoup !"
+      assign qn2 = "— Thekla Luth, Allemagne"
+      assign q3 = "Nous avons appris Aurélie chez vous à la Country High Dance Academy et nous sommes ravis de pouvoir déjà danser et transmettre cette magnifique chorégraphie."
+      assign qn3 = "— Andreas & Ulrike Gort, Suisse"
+      assign q4 = "Bonjour et un grand compliment pour cette offre !"
+      assign qn4 = "— Salvatore Avellino, Italie"
+      assign q5 = "C'était une super session, merci beaucoup !"
+      assign qn5 = "— Alison Thomson"
+    when "it"
+      assign hero_title = "L'Academy<br>torna"
+      assign hero_lead = "A fine 2026 inizia un nuovo capitolo: la COUNTRY&nbsp;HIGH Dance Academy – ricostruita, imparando da tutto, per te. Fino ad allora resta il nostro segreto."
+      assign cta_first = "Scoprilo per primo·a"
+      assign hero_cta2 = "Fino ad allora: balla con noi live"
+      assign letter_eyebrow = "Una parola sincera"
+      assign letter_title = "Un capitolo si chiude.<br>Il nostro viaggio continua."
+      assign letter_p1 = "Dopo la nostra prima stagione di Academy chiudiamo un capitolo – non perché l'idea sia finita, ma perché ciò che verrà è ripensato da zero."
+      assign letter_p2 = "In questo primo anno abbiamo imparato molto: cosa funziona, cosa deve migliorare e di cosa avete davvero bisogno per crescere ballando. Ora ci prendiamo questo tempo – con calma, cura e tutto il cuore."
+      assign letter_p3 = "Riapriamo a fine 2026. Fino ad allora restiamo in movimento – e con la newsletter resti più vicino di tutti."
+      assign sign = "La tua Kim"
+      assign note_label = "Buono a sapersi"
+      assign note_text = "La nostra precedente piattaforma Academy è stata chiusa <strong>il 21 agosto 2026</strong>. Tutti i membri sono stati informati personalmente in anticipo – nessuno viene dimenticato."
+      assign stat_txt = "ballerini hanno partecipato alla prima stagione – i vostri feedback sono la base di tutto ciò che arriva ora."
+      assign hints_eyebrow = "★ Ancora segreto"
+      assign hints_title = "Tre cose possiamo già svelarle"
+      assign hints_lead = "Abbiamo preso sul serio i vostri feedback e desideri dalla community – entrano direttamente nella nuova offerta. Così costruiamo il posto in cui i line dancer crescono davvero."
+      assign hint1_label = "01 — Struttura"
+      assign hint2_label = "02 — Il tuo ritmo"
+      assign hint3_label = "03 — Tuo per sempre"
+      assign hint1_p = "Segui un percorso chiaro – con una struttura che ti fa davvero progredire. Niente scroll infinito."
+      assign hint2_p = "Ti prende esattamente da dove sei – e ti porta avanti passo dopo passo."
+      assign hint3_p = "Quello che impari con noi resta tuo – senza data di scadenza."
+      assign badge = "Ritorno fine 2026"
+      assign news_eyebrow = "★ Prima di tutti"
+      assign news_title = "Ci sei quando<br>apriamo"
+      assign news_lead = "Resta qui nella newsletter – chi è iscritto sa prima di tutti quando parte la nuova Academy e come partecipare."
+      assign f_fname = "Nome"
+      assign f_lname = "Cognome"
+      assign f_email = "Indirizzo e-mail"
+      assign f_level_q = "A che punto sei?"
+      assign f_level_new = "Assoluto principiante – mai ballato"
+      assign f_consent = "Sì, inviatemi aggiornamenti sull'avvio della nuova Academy. Disiscrizione in qualsiasi momento."
+      assign cta_join = "Ci sto"
+      assign f_note = "Gratuito e senza impegno. Puoi disiscriverti in qualsiasi momento."
+      assign live_eyebrow = "★ Fino ad allora"
+      assign live_title = "Balla con noi – live"
+      assign live_lead = "Finché l'Academy non torna, restiamo in movimento – dove COUNTRY&nbsp;HIGH dà il meglio: in pista."
+      assign live_caption = "Vieni ai nostri eventi, balla con noi, fai parte della family."
+      assign camp_label = "Prossimo evento clou"
+      assign camp_date = "20 – 22 novembre 2026"
+      assign camp_date_note = "un intero weekend"
+      assign camp_i2 = "Hotel Terrace, Engelberg – tutto l'hotel solo per noi"
+      assign camp_i3 = "Tutti i workshop &amp; le sessioni di tecnica inclusi"
+      assign camp_i4 = "2 dance night, 2 pernottamenti &amp; ottima cucina"
+      assign camp_price_note = "a persona in camera doppia, tutto incluso"
+      assign camp_fine = "Un weekend che sa di vacanza – e fa crescere il tuo ballo. <strong>I posti sono molto limitati.</strong>"
+      assign camp_cta = "Prenota il tuo posto"
+      assign quotes_eyebrow = "Voci dalla prima stagione"
+      assign quotes_title = "È da qui che ripartiamo"
+      assign faq_title = "Domande? Siamo qui per te."
+      assign faq_q1 = "Quando esattamente si riparte?"
+      assign faq_a1 = "Fine 2026. Non riveliamo ancora una data esatta di proposito – ci prendiamo il tempo di farlo bene. Con la newsletter lo saprai per primo."
+      assign faq_q2 = "Ero un membro – cosa succede al mio accesso?"
+      assign faq_a2 = "La piattaforma precedente è stata chiusa il 21 agosto 2026. Abbiamo informato tutti i membri personalmente in anticipo. Se hai domande sul tuo abbonamento, scrivici – ce ne occupiamo noi."
+      assign faq_q3 = "La newsletter ha un costo?"
+      assign faq_a3 = "No – completamente gratuita e senza impegno. Deciderai con calma più avanti se vuoi far parte della nuova Academy."
+      assign faq_q4 = "Cosa sarà diverso nella nuova Academy?"
+      assign faq_a4 = "È ripensata da zero – sulla base dei vostri feedback. Struttura chiara invece dello scroll infinito, un inizio esattamente da dove sei e contenuti che restano tuoi. Il resto rimane il nostro segreto fino ad allora."
+      assign faq_q5 = "Posso incontrarvi da qualche parte fino ad allora?"
+      assign faq_a5 = "Sì, assolutamente. Siamo in giro con i nostri eventi – prossimamente al COUNTRY&nbsp;HIGH Boot Camp dal 20 al 22 novembre 2026 a Engelberg."
+      assign cta_title = "Ci vediamo<br>in pista"
+      assign cta_lead = "Resta nella newsletter e fai parte del prossimo capitolo della COUNTRY&nbsp;HIGH Dance Academy."
+      assign nav_about = "Chi siamo"
+      assign nav_story = "La nostra storia"
+      assign nav_events = "Eventi"
+      assign nav_shop = "{{ nav_shop }}"
+      assign leg_agb = "Termini"
+      assign leg_priv = "Privacy"
+      assign leg_imp = "Note legali"
+      assign q1 = "Mi sono entusiasmata subito quando ho letto della vostra Academy – cercavo un'occasione così da tanto tempo. Avete costruito qualcosa di meraviglioso."
+      assign qn1 = "— Gabriele Klause, Germania"
+      assign q2 = "La struttura dei video è ottima. Non devi tornare indietro di continuo, perché si ripete abbastanza spesso e si balla dall'inizio. La sequenza dei video è perfetta. Grazie mille!"
+      assign qn2 = "— Thekla Luth, Germania"
+      assign q3 = "Abbiamo imparato Aurélie da voi alla Country High Dance Academy e siamo felicissimi di poter già ballare e trasmettere questa splendida coreografia."
+      assign qn3 = "— Andreas & Ulrike Gort, Svizzera"
+      assign q4 = "Buongiorno e un grande complimento per questa proposta!"
+      assign qn4 = "— Salvatore Avellino, Italia"
+      assign q5 = "È stata una sessione fantastica, grazie mille!"
+      assign qn5 = "— Alison Thomson"
+    when "es"
+      assign hero_title = "La Academy<br>vuelve"
+      assign hero_lead = "A finales de 2026 empieza un nuevo capítulo: la COUNTRY&nbsp;HIGH Dance Academy – reconstruida, aprendiendo de todo, para ti. Hasta entonces sigue siendo nuestro secreto."
+      assign cta_first = "Entérate antes que nadie"
+      assign hero_cta2 = "Hasta entonces: baila con nosotros en vivo"
+      assign letter_eyebrow = "Unas palabras sinceras"
+      assign letter_title = "Un capítulo se cierra.<br>Nuestro viaje continúa."
+      assign letter_p1 = "Tras nuestra primera temporada de Academy cerramos un capítulo – no porque la idea haya terminado, sino porque lo que viene está pensado de nuevo desde cero."
+      assign letter_p2 = "En este primer año aprendimos mucho: qué funciona, qué debe mejorar y qué necesitáis de verdad para crecer bailando. Ahora nos tomamos ese tiempo – con calma, cuidado y con todo el corazón."
+      assign letter_p3 = "Reabrimos a finales de 2026. Hasta entonces seguimos en movimiento – y con la newsletter estás más cerca que nadie."
+      assign sign = "Tu Kim"
+      assign note_label = "Bueno saberlo"
+      assign note_text = "Cerramos nuestra plataforma anterior de la Academy <strong>el 21 de agosto de 2026</strong>. Todos los miembros fueron informados personalmente de antemano – aquí nadie queda olvidado."
+      assign stat_txt = "bailarines participaron en la primera temporada – vuestros comentarios son la base de todo lo que viene ahora."
+      assign hints_eyebrow = "★ Aún secreto"
+      assign hints_title = "Tres cosas que ya podemos contarte"
+      assign hints_lead = "Nos tomamos en serio vuestros comentarios y deseos de la comunidad – forman parte directa de la nueva propuesta. Así construimos el lugar donde los line dancers crecen de verdad."
+      assign hint1_label = "01 — Estructura"
+      assign hint2_label = "02 — Tu ritmo"
+      assign hint3_label = "03 — Tuyo para siempre"
+      assign hint1_p = "Sigues un camino claro – con una estructura que te hace avanzar de verdad. Sin scroll infinito."
+      assign hint2_p = "Te encuentra justo donde estás – y te lleva más allá, paso a paso."
+      assign hint3_p = "Lo que aprendes con nosotros se queda contigo – sin fecha de caducidad."
+      assign badge = "Regreso finales de 2026"
+      assign news_eyebrow = "★ Antes que nadie"
+      assign news_title = "Estate ahí cuando<br>abramos"
+      assign news_lead = "Quédate aquí en la newsletter – quienes están suscritos saben antes que nadie cuándo empieza la nueva Academy y cómo participar."
+      assign f_fname = "Nombre"
+      assign f_lname = "Apellido"
+      assign f_email = "Correo electrónico"
+      assign f_level_q = "¿En qué punto estás?"
+      assign f_level_new = "Totalmente nuevo – nunca has bailado"
+      assign f_consent = "Sí, enviadme novedades sobre el lanzamiento de la nueva Academy. Puedes darte de baja cuando quieras."
+      assign cta_join = "Me apunto"
+      assign f_note = "Gratis y sin compromiso. Puedes darte de baja cuando quieras."
+      assign live_eyebrow = "★ Hasta entonces"
+      assign live_title = "Baila con nosotros – en vivo"
+      assign live_lead = "Hasta que la Academy vuelva, seguimos en movimiento – donde COUNTRY&nbsp;HIGH es más bonito: en la pista."
+      assign live_caption = "Ven a nuestros eventos, baila con nosotros, sé parte de la family."
+      assign camp_label = "Próximo evento destacado"
+      assign camp_date = "20 – 22 de noviembre de 2026"
+      assign camp_date_note = "todo un fin de semana"
+      assign camp_i2 = "Hotel Terrace, Engelberg – todo el hotel solo para nosotros"
+      assign camp_i3 = "Todos los workshops y sesiones de técnica incluidos"
+      assign camp_i4 = "2 dance nights, 2 noches &amp; buena comida"
+      assign camp_price_note = "por persona en habitación doble, todo incluido"
+      assign camp_fine = "Un fin de semana que sabe a vacaciones – y hace crecer tu baile. <strong>Las plazas son muy limitadas.</strong>"
+      assign camp_cta = "Reserva tu plaza"
+      assign quotes_eyebrow = "Voces de la primera temporada"
+      assign quotes_title = "Sobre esto seguimos construyendo"
+      assign faq_title = "¿Preguntas? Estamos aquí para ti."
+      assign faq_q1 = "¿Cuándo exactamente vuelve a empezar?"
+      assign faq_a1 = "Finales de 2026. A propósito aún no damos una fecha exacta – nos tomamos el tiempo de hacerlo bien. Por la newsletter lo sabrás primero."
+      assign faq_q2 = "Era miembro – ¿qué pasa con mi acceso?"
+      assign faq_a2 = "La plataforma anterior cerró el 21 de agosto de 2026. Informamos a todos los miembros personalmente de antemano. Si tienes preguntas sobre tu suscripción, escríbenos – nos ocupamos de ello."
+      assign faq_q3 = "¿La newsletter cuesta algo?"
+      assign faq_a3 = "No – totalmente gratis y sin compromiso. Decides más tarde, con calma, si quieres formar parte de la nueva Academy."
+      assign faq_q4 = "¿Qué será diferente en la nueva Academy?"
+      assign faq_a4 = "Está pensada de nuevo desde cero – a partir de vuestros comentarios. Estructura clara en vez de scroll infinito, un inicio justo donde estás y contenidos que se quedan contigo. Lo demás sigue siendo nuestro secreto hasta entonces."
+      assign faq_q5 = "¿Puedo encontraros en algún sitio hasta entonces?"
+      assign faq_a5 = "Sí, claro. Estamos de gira con nuestros eventos – el próximo es el COUNTRY&nbsp;HIGH Boot Camp del 20 al 22 de noviembre de 2026 en Engelberg."
+      assign cta_title = "Nos vemos<br>en la pista"
+      assign cta_lead = "Quédate en la newsletter y forma parte del próximo capítulo de la COUNTRY&nbsp;HIGH Dance Academy."
+      assign nav_about = "Sobre nosotros"
+      assign nav_story = "Nuestra historia"
+      assign nav_events = "Eventos"
+      assign nav_shop = "Tienda"
+      assign leg_agb = "Términos"
+      assign leg_priv = "Privacidad"
+      assign leg_imp = "Aviso legal"
+      assign q1 = "Me entusiasmé enseguida al leer sobre vuestra Academy – llevaba mucho buscando una oportunidad así. Habéis construido algo maravilloso."
+      assign qn1 = "— Gabriele Klause, Alemania"
+      assign q2 = "La estructura de los vídeos es genial. No tienes que volver atrás siempre, porque se repite lo suficiente y se baila desde el principio. La secuencia de los vídeos es perfecta. ¡Muchas gracias!"
+      assign qn2 = "— Thekla Luth, Alemania"
+      assign q3 = "Aprendimos Aurélie con vosotros en la Country High Dance Academy y estamos encantados de poder ya bailar y transmitir esta preciosa coreografía."
+      assign qn3 = "— Andreas & Ulrike Gort, Suiza"
+      assign q4 = "¡Buenos días y un gran cumplido por esta propuesta!"
+      assign qn4 = "— Salvatore Avellino, Italia"
+      assign q5 = "¡Fue una sesión estupenda, muchas gracias!"
+      assign qn5 = "— Alison Thomson"
+    else
+      assign hero_title = "{{ hero_title }}"
+      assign hero_lead = "{{ hero_lead }}"
+      assign cta_first = "{{ cta_first }}"
+      assign hero_cta2 = "{{ hero_cta2 }}"
+      assign letter_eyebrow = "{{ letter_eyebrow }}"
+      assign letter_title = "{{ letter_title }}"
+      assign letter_p1 = "{{ letter_p1 }}"
+      assign letter_p2 = "{{ letter_p2 }}"
+      assign letter_p3 = "{{ letter_p3 }}"
+      assign sign = "{{ sign }}"
+      assign note_label = "{{ note_label }}"
+      assign note_text = "{{ note_text }}"
+      assign stat_txt = "{{ stat_txt }}"
+      assign hints_eyebrow = "{{ hints_eyebrow }}"
+      assign hints_title = "{{ hints_title }}"
+      assign hints_lead = "{{ hints_lead }}"
+      assign hint1_label = "{{ hint1_label }}"
+      assign hint2_label = "{{ hint2_label }}"
+      assign hint3_label = "{{ hint3_label }}"
+      assign hint1_p = "{{ hint1_p }}"
+      assign hint2_p = "{{ hint2_p }}"
+      assign hint3_p = "{{ hint3_p }}"
+      assign badge = "Neustart Ende 2026"
+      assign news_eyebrow = "{{ news_eyebrow }}"
+      assign news_title = "{{ news_title }}"
+      assign news_lead = "{{ news_lead }}"
+      assign f_fname = "Vorname"
+      assign f_lname = "Nachname"
+      assign f_email = "E-Mail-Adresse"
+      assign f_level_q = "{{ f_level_q }}"
+      assign f_level_new = "{{ f_level_new }}"
+      assign f_consent = "Ja, schickt mir Updates zum Start der neuen Academy. Abmeldung jederzeit möglich."
+      assign cta_join = "Dabei sein"
+      assign f_note = "{{ f_note }}"
+      assign live_eyebrow = "{{ live_eyebrow }}"
+      assign live_title = "{{ live_title }}"
+      assign live_lead = "{{ live_lead }}"
+      assign live_caption = "{{ live_caption }}"
+      assign camp_label = "{{ camp_label }}"
+      assign camp_date = "20. – 22. November 2026"
+      assign camp_date_note = "ein ganzes Wochenende"
+      assign camp_i2 = "{{ camp_i2 }}"
+      assign camp_i3 = "{{ camp_i3 }}"
+      assign camp_i4 = "{{ camp_i4 }}"
+      assign camp_price_note = "{{ camp_price_note }}"
+      assign camp_fine = "{{ camp_fine }}"
+      assign camp_cta = "Jetzt Platz sichern"
+      assign quotes_eyebrow = "{{ quotes_eyebrow }}"
+      assign quotes_title = "{{ quotes_title }}"
+      assign faq_title = "{{ faq_title }}"
+      assign faq_q1 = "{{ faq_q1 }}"
+      assign faq_a1 = "{{ faq_a1 }}"
+      assign faq_q2 = "{{ faq_q2 }}"
+      assign faq_a2 = "{{ faq_a2 }}"
+      assign faq_q3 = "{{ faq_q3 }}"
+      assign faq_a3 = "{{ faq_a3 }}"
+      assign faq_q4 = "{{ faq_q4 }}"
+      assign faq_a4 = "{{ faq_a4 }}"
+      assign faq_q5 = "{{ faq_q5 }}"
+      assign faq_a5 = "{{ faq_a5 }}"
+      assign cta_title = "{{ cta_title }}"
+      assign cta_lead = "{{ cta_lead }}"
+      assign nav_about = "{{ nav_about }}"
+      assign nav_story = "{{ nav_story }}"
+      assign nav_events = "{{ nav_events }}"
+      assign nav_shop = "{{ nav_shop }}"
+      assign leg_agb = "{{ leg_agb }}"
+      assign leg_priv = "{{ leg_priv }}"
+      assign leg_imp = "{{ leg_imp }}"
+      assign q1 = "{{ q1 }}"
+      assign qn1 = "{{ qn1 }}"
+      assign q2 = "Der Aufbau der Videos ist super. Man muss nicht immer zurückgehen, weil oft genug wiederholt und von Beginn an getanzt wird. Die Abfolge der Videos ist perfekt. Vielen Dank!"
+      assign qn2 = "— Thekla Luth, Deutschland"
+      assign q3 = "Wir haben Aurélie bei euch an der Country High Dance Academy gelernt und freuen uns riesig, dass wir diese wunderschöne Choreografie schon tanzen und weitergeben können."
+      assign qn3 = "— Andreas & Ulrike Gort, Schweiz"
+      assign q4 = "Guten Morgen und ein grosses Kompliment für dieses Angebot!"
+      assign qn4 = "— Salvatore Avellino, Italien"
+      assign q5 = "Das war eine grossartige Session, vielen Dank!"
+      assign qn5 = "— Alison Thomson"
+  endcase
+-%}
+
 
 
 <!-- ══ HEADER ══════════════════════════════════════════════════ -->
@@ -476,11 +882,11 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
       <span>Country High Dance Academy</span>
     </div>
     <div class="ch-script ch-hero__script">the best is yet to come</div>
-    <h1 class="ch-display ch-hero__title">Die Academy<br>kommt zurück</h1>
-    <p class="ch-hero__lead">Ende 2026 beginnt ein neues Kapitel: die COUNTRY&nbsp;HIGH Dance Academy – neu gebaut, aus allem gelernt, für dich. Bis dahin bleibt es unser Geheimnis.</p>
+    <h1 class="ch-display ch-hero__title">{{ hero_title }}</h1>
+    <p class="ch-hero__lead">{{ hero_lead }}</p>
     <div class="ch-hero__actions">
-      <a href="#newsletter" class="ch-btn ch-btn--beige ch-btn--lg">Als Erste erfahren</a>
-      <a href="#bootcamp" class="ch-link-under">Bis dahin: tanz mit uns live</a>
+      <a href="#newsletter" class="ch-btn ch-btn--beige ch-btn--lg">{{ cta_first }}</a>
+      <a href="#bootcamp" class="ch-link-under">{{ hero_cta2 }}</a>
     </div>
   </div>
 </section>
@@ -492,14 +898,14 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
       <div class="ch-letter__head">
         <div class="ch-letter__eyebrow">
           <img src="{{ 'icon-star-beige-header.png' | asset_url }}" alt="">
-          <span>Ein offenes Wort</span>
+          <span>{{ letter_eyebrow }}</span>
         </div>
-        <h2 class="ch-display ch-letter__title">Ein Kapitel schliesst.<br>Unsere Reise geht weiter.</h2>
+        <h2 class="ch-display ch-letter__title">{{ letter_title }}</h2>
       </div>
-      <p>Nach unserer ersten Academy-Saison schliessen wir ein Kapitel – nicht, weil die Idee vorbei ist, sondern weil das, was als Nächstes kommt, von Grund auf neu gedacht ist.</p>
-      <p>Wir haben in diesem ersten Jahr viel gelernt: was gut funktioniert, was besser werden muss und was ihr wirklich braucht, um beim Tanzen zu wachsen. Diese Zeit nehmen wir uns jetzt – in Ruhe, sorgfältig und mit ganzem Herzen.</p>
-      <p>Ende 2026 öffnen wir wieder. Bis dahin bleiben wir in Bewegung – und du bleibst über den Newsletter näher dran als alle anderen.</p>
-      <div class="ch-script ch-letter__sign">Deine Kim</div>
+      <p>{{ letter_p1 }}</p>
+      <p>{{ letter_p2 }}</p>
+      <p>{{ letter_p3 }}</p>
+      <div class="ch-script ch-letter__sign">{{ sign }}</div>
     </div>
 
     <div class="ch-letter__aside">
@@ -507,12 +913,12 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
         <img src="{{ 'comeback-notes.jpg' | asset_url }}" alt="Choreografie-Notizen entstehen am Schreibtisch">
       </div>
       <div class="ch-note">
-        <div class="ch-note__label">Gut zu wissen</div>
-        <p>Unsere bisherige Academy-Plattform haben wir <strong>per 21. August 2026</strong> geschlossen. Alle Mitglieder wurden vorab persönlich informiert – niemand geht dabei vergessen.</p>
+        <div class="ch-note__label">{{ note_label }}</div>
+        <p>{{ note_text }}</p>
       </div>
       <div class="ch-stat">
         <div class="ch-stat__num">200+</div>
-        <div class="ch-stat__txt">Dancer waren in der ersten Saison dabei – euer Feedback ist die Grundlage für alles, was jetzt kommt.</div>
+        <div class="ch-stat__txt">{{ stat_txt }}</div>
       </div>
     </div>
   </div>
@@ -521,27 +927,27 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
 <!-- ══ DREI ANDEUTUNGEN ════════════════════════════════════════ -->
 <section class="ch-hints" id="neu">
   <div class="ch-hints__head">
-    <div class="ch-eyebrow">★ Noch geheim</div>
-    <h2 class="ch-display ch-hints__title">Drei Dinge dürfen wir verraten</h2>
-    <p class="ch-hints__lead">Eure Feedbacks und Wünsche aus der Community haben wir ernst genommen – sie fliessen direkt in das neue Angebot ein. So bauen wir den Ort, an dem Line Dancer wirklich wachsen.</p>
+    <div class="ch-eyebrow">{{ hints_eyebrow }}</div>
+    <h2 class="ch-display ch-hints__title">{{ hints_title }}</h2>
+    <p class="ch-hints__lead">{{ hints_lead }}</p>
   </div>
   <div class="ch-hints__grid">
     <div class="ch-hint">
-      <div class="ch-hint__label">01 — Struktur</div>
-      <p>Du folgst einem klaren Weg – mit Struktur, die dich wirklich weiterbringt. Kein endloses Scrollen.</p>
+      <div class="ch-hint__label">{{ hint1_label }}</div>
+      <p>{{ hint1_p }}</p>
     </div>
     <div class="ch-hint">
-      <div class="ch-hint__label">02 — Dein Tempo</div>
-      <p>Es holt dich genau dort ab, wo du stehst – und bringt dich Schritt für Schritt weiter.</p>
+      <div class="ch-hint__label">{{ hint2_label }}</div>
+      <p>{{ hint2_p }}</p>
     </div>
     <div class="ch-hint">
-      <div class="ch-hint__label">03 — Für immer dein</div>
-      <p>Was du bei uns lernst, bleibt dir erhalten – ohne Ablaufdatum.</p>
+      <div class="ch-hint__label">{{ hint3_label }}</div>
+      <p>{{ hint3_p }}</p>
     </div>
   </div>
   <div class="ch-badge">
     <img src="{{ 'icon-star-beige-header.png' | asset_url }}" alt="">
-    <span>{{ section.settings.relaunch_badge }}</span>
+    <span>{{ badge }}</span>
   </div>
 </section>
 
@@ -551,21 +957,21 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
   <div class="ch-news__scrim"></div>
   <div class="ch-news__grid">
     <div class="ch-news__head">
-      <div class="ch-eyebrow ch-eyebrow--dark">★ Vor allen anderen</div>
-      <h2 class="ch-display ch-news__title">Sei dabei, wenn<br>wir öffnen</h2>
-      <p class="ch-news__lead">Bleib einfach hier im Newsletter – Abonnent:innen erfahren vor allen anderen, wann die neue Academy startet und wie du dabei bist.</p>
+      <div class="ch-eyebrow ch-eyebrow--dark">{{ news_eyebrow }}</div>
+      <h2 class="ch-display ch-news__title">{{ news_title }}</h2>
+      <p class="ch-news__lead">{{ news_lead }}</p>
       <div class="ch-script ch-news__script">this is where dancers grow.</div>
     </div>
     <div class="ch-news__card">
       <form action="{{ section.settings.mailchimp_action_url }}" method="post" target="_blank" novalidate class="ch-form" autocomplete="on">
           <div class="ch-form__row">
-            <input class="ch-field" type="text" name="FNAME" placeholder="Vorname" autocomplete="given-name">
-            <input class="ch-field" type="text" name="LNAME" placeholder="Nachname" autocomplete="family-name">
+            <input class="ch-field" type="text" name="FNAME" placeholder="{{ f_fname }}" autocomplete="given-name">
+            <input class="ch-field" type="text" name="LNAME" placeholder="{{ f_lname }}" autocomplete="family-name">
           </div>
-          <input class="ch-field" type="email" name="EMAIL" placeholder="E-Mail-Adresse" autocomplete="email" required>
-          <select class="ch-field" name="{{ section.settings.mailchimp_level_group | default: 'group[384080]' }}" aria-label="Wo stehst du gerade?">
-            <option value="">Wo stehst du gerade?</option>
-            <option value="8">Ganz neu – noch nie getanzt</option>
+          <input class="ch-field" type="email" name="EMAIL" placeholder="{{ f_email }}" autocomplete="email" required>
+          <select class="ch-field" name="{{ section.settings.mailchimp_level_group | default: 'group[384080]' }}" aria-label="{{ f_level_q }}">
+            <option value="">{{ f_level_q }}</option>
+            <option value="8">{{ f_level_new }}</option>
             <option value="16">Beginner</option>
             <option value="32">Improver / Intermediate</option>
             <option value="64">Advanced</option>
@@ -574,14 +980,14 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
           {%- if section.settings.mailchimp_gdpr_field != blank -%}
           <label style="display:flex;gap:9px;align-items:flex-start;margin-top:2px;font-family:var(--font-ui);font-size:12px;line-height:1.5;color:rgba(255,255,255,.72);cursor:pointer;">
             <input type="checkbox" name="{{ section.settings.mailchimp_gdpr_field }}" value="Y" required style="margin-top:2px;flex:none;accent-color:#c0a888;">
-            <span>{{ section.settings.consent_text }}</span>
+            <span>{{ f_consent }}</span>
           </label>
           {%- endif -%}
           {%- if section.settings.mailchimp_botfield != blank -%}
           <div aria-hidden="true" style="position:absolute;left:-5000px;"><input type="text" name="{{ section.settings.mailchimp_botfield }}" tabindex="-1" value=""></div>
           {%- endif -%}
-          <button type="submit" class="ch-btn ch-btn--beige ch-btn--md ch-btn--full" style="margin-top:5px;">{{ section.settings.newsletter_cta }}</button>
-          <p class="ch-form__note">Kostenlos und unverbindlich. Du kannst dich jederzeit abmelden.</p>
+          <button type="submit" class="ch-btn ch-btn--beige ch-btn--md ch-btn--full" style="margin-top:5px;">{{ cta_join }}</button>
+          <p class="ch-form__note">{{ f_note }}</p>
         </form>
     </div>
     <div class="ch-script ch-news__script--mobile">this is where dancers grow.</div>
@@ -592,9 +998,9 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
 <section class="ch-live" id="bootcamp">
   <div class="ch-wrap">
     <div class="ch-live__head">
-      <div class="ch-eyebrow">★ Bis dahin</div>
-      <h2 class="ch-display ch-live__title">Tanz mit uns – live</h2>
-      <p class="ch-live__lead">Bis die Academy zurück ist, bleiben wir in Bewegung – dort, wo COUNTRY&nbsp;HIGH am schönsten ist: auf der Tanzfläche.</p>
+      <div class="ch-eyebrow">{{ live_eyebrow }}</div>
+      <h2 class="ch-display ch-live__title">{{ live_title }}</h2>
+      <p class="ch-live__lead">{{ live_lead }}</p>
     </div>
 
     <div class="ch-live__grid">
@@ -603,29 +1009,29 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
         <div class="ch-live__photo-scrim"></div>
         <div class="ch-live__caption">
           <div class="ch-script">we dance. we connect.</div>
-          <p>Komm zu unseren Events, tanz mit uns, sei Teil der Family.</p>
+          <p>{{ live_caption }}</p>
         </div>
       </div>
 
       <div class="ch-camp">
         <div class="ch-camp__label">
           <img src="{{ 'icon-star-beige-header.png' | asset_url }}" alt="">
-          <span>Nächstes Highlight</span>
+          <span>{{ camp_label }}</span>
         </div>
         <h3 class="ch-display ch-camp__title">Country High<br>Boot Camp</h3>
         <div class="ch-camp__list">
-          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span><strong>{{ section.settings.camp_date }}</strong> · {{ section.settings.camp_date_note }}</span></div>
-          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span>Hotel Terrace, Engelberg – das ganze Hotel nur für uns</span></div>
-          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span>Alle Workshops &amp; Technik Sessions inklusive</span></div>
-          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span>2 Dance Nights, 2 Übernachtungen &amp; feine Verpflegung</span></div>
+          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span><strong>{{ camp_date }}</strong> · {{ camp_date_note }}</span></div>
+          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span>{{ camp_i2 }}</span></div>
+          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span>{{ camp_i3 }}</span></div>
+          <div class="ch-camp__item"><span class="ch-camp__dot"></span><span>{{ camp_i4 }}</span></div>
         </div>
         <div class="ch-camp__price">
           <div class="ch-camp__price-num">{{ section.settings.camp_price }}</div>
-          <div class="ch-camp__price-note">p.&nbsp;P. im Doppelzimmer, alles inklusive</div>
+          <div class="ch-camp__price-note">{{ camp_price_note }}</div>
         </div>
-        <p class="ch-camp__fine">Ein Wochenende, das sich wie Ferien anfühlt – und dich tänzerisch weiterbringt. <strong>Die Plätze sind sehr limitiert.</strong></p>
+        <p class="ch-camp__fine">{{ camp_fine }}</p>
         <div class="ch-camp__cta">
-          <a href="{{ section.settings.camp_url }}" class="ch-btn ch-btn--red ch-btn--md">{{ section.settings.camp_cta }}</a>
+          <a href="{{ section.settings.camp_url }}" class="ch-btn ch-btn--red ch-btn--md">{{ camp_cta }}</a>
         </div>
       </div>
     </div>
@@ -636,15 +1042,15 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
 <section class="ch-quotes">
   <div class="ch-wrap" style="max-width:1100px;">
     <div class="ch-quotes__head">
-      <div class="ch-eyebrow ch-eyebrow--dark">Stimmen aus der ersten Saison</div>
-      <h2 class="ch-display ch-quotes__title">Darauf bauen wir weiter</h2>
+      <div class="ch-eyebrow ch-eyebrow--dark">{{ quotes_eyebrow }}</div>
+      <h2 class="ch-display ch-quotes__title">{{ quotes_title }}</h2>
     </div>
     <div class="ch-quotes__stage">
       <button class="ch-arrow ch-arrow--prev" id="chPrev" aria-label="Vorheriges Zitat">&lsaquo;</button>
       <div class="ch-quotes__body">
         <div class="ch-quotes__mark">&ldquo;</div>
-        <p class="ch-quotes__text" id="chQuote">Ich war sofort begeistert, als ich von eurer Academy gelesen habe – so eine Gelegenheit habe ich lange gesucht. Ihr habt etwas Wunderbares aufgebaut.</p>
-        <div class="ch-quotes__name" id="chQuoteName">— Gabriele Klause, Deutschland</div>
+        <p class="ch-quotes__text" id="chQuote">{{ q1 }}</p>
+        <div class="ch-quotes__name" id="chQuoteName">{{ qn1 }}</div>
       </div>
       <button class="ch-arrow ch-arrow--next" id="chNext" aria-label="Nächstes Zitat">&rsaquo;</button>
       <div class="ch-dots" id="chDots"></div>
@@ -657,28 +1063,28 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
   <div class="ch-faq__inner">
     <div class="ch-faq__head">
       <div class="ch-eyebrow">FAQ</div>
-      <h2 class="ch-display ch-faq__title">Fragen? Wir sind für dich da.</h2>
+      <h2 class="ch-display ch-faq__title">{{ faq_title }}</h2>
     </div>
     <div class="ch-faq__list">
       <details>
-        <summary>Wann genau geht es wieder los?</summary>
-        <p>Ende 2026. Ein exaktes Datum verraten wir bewusst noch nicht – wir nehmen uns die Zeit, es richtig zu machen. Über den Newsletter erfährst du es zuerst.</p>
+        <summary>{{ faq_q1 }}</summary>
+        <p>{{ faq_a1 }}</p>
       </details>
       <details>
-        <summary>Ich war Mitglied – was passiert mit meinem Zugang?</summary>
-        <p>Die bisherige Plattform wurde per 21. August 2026 geschlossen. Alle Mitglieder haben wir vorab persönlich informiert. Wenn du Fragen zu deinem Abo hast, melde dich einfach – wir kümmern uns darum.</p>
+        <summary>{{ faq_q2 }}</summary>
+        <p>{{ faq_a2 }}</p>
       </details>
       <details>
-        <summary>Kostet der Newsletter etwas?</summary>
-        <p>Nein – komplett kostenlos und unverbindlich. Du entscheidest später in Ruhe, ob du bei der neuen Academy dabei sein möchtest.</p>
+        <summary>{{ faq_q3 }}</summary>
+        <p>{{ faq_a3 }}</p>
       </details>
       <details>
-        <summary>Was wird an der neuen Academy anders sein?</summary>
-        <p>Sie ist von Grund auf neu gedacht – auf Basis eurer Feedbacks. Klare Struktur statt endloses Scrollen, ein Einstieg genau dort, wo du stehst, und Inhalte, die dir erhalten bleiben. Mehr bleibt bis dahin unser Geheimnis.</p>
+        <summary>{{ faq_q4 }}</summary>
+        <p>{{ faq_a4 }}</p>
       </details>
       <details>
-        <summary>Kann ich euch bis dahin irgendwo treffen?</summary>
-        <p>Ja, unbedingt. Wir sind mit unseren Events unterwegs – als Nächstes beim COUNTRY&nbsp;HIGH Boot Camp vom 20. bis 22. November 2026 in Engelberg.</p>
+        <summary>{{ faq_q5 }}</summary>
+        <p>{{ faq_a5 }}</p>
       </details>
     </div>
   </div>
@@ -691,10 +1097,10 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
   <div class="ch-cta__inner">
     <img class="ch-cta__star" src="{{ 'icon-star-white-cta.png' | asset_url }}" alt="">
     <div class="ch-script ch-cta__script">the best is yet to come</div>
-    <h2 class="ch-display ch-cta__title">Wir sehen uns<br>auf der Tanzfläche</h2>
-    <p class="ch-cta__lead">Bleib im Newsletter und sei Teil des nächsten Kapitels der COUNTRY&nbsp;HIGH Dance Academy.</p>
+    <h2 class="ch-display ch-cta__title">{{ cta_title }}</h2>
+    <p class="ch-cta__lead">{{ cta_lead }}</p>
     <div class="ch-cta__btn">
-      <a href="#newsletter" class="ch-btn ch-btn--beige ch-btn--md">Als Erste erfahren</a>
+      <a href="#newsletter" class="ch-btn ch-btn--beige ch-btn--md">{{ cta_first }}</a>
     </div>
   </div>
 </section>
@@ -706,10 +1112,10 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
     <h2 class="ch-display ch-footer__claim">We dance. We connect.</h2>
     <div class="ch-script ch-footer__script">we create memories</div>
     <nav class="ch-footer__nav">
-      <a href="https://countryhigh.ch/pages/dance-academy">Über uns</a>
-      <a href="https://countryhigh.ch/pages/story">Story</a>
-      <a href="https://countryhigh.ch/pages/events">Events</a>
-      <a href="https://countryhigh.ch/pages/shop">Shop</a>
+      <a href="https://countryhigh.ch/pages/dance-academy">{{ nav_about }}</a>
+      <a href="https://countryhigh.ch/pages/story">{{ nav_story }}</a>
+      <a href="https://countryhigh.ch/pages/events">{{ nav_events }}</a>
+      <a href="https://countryhigh.ch/pages/shop">{{ nav_shop }}</a>
     </nav>
     <div class="ch-footer__social">
       <a href="https://www.instagram.com/countryhigh.ch/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -729,9 +1135,9 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
   </div>
   <div class="ch-footer__legal">
     <div class="ch-footer__legal-links">
-      <a href="https://countryhigh.ch/en/policies/terms-of-service">AGB</a>
-      <a href="https://countryhigh.ch/en/policies/privacy-policy">Datenschutz</a>
-      <a href="https://countryhigh.ch/en/policies/legal-notice">Impressum</a>
+      <a href="https://countryhigh.ch/en/policies/terms-of-service">{{ leg_agb }}</a>
+      <a href="https://countryhigh.ch/en/policies/privacy-policy">{{ leg_priv }}</a>
+      <a href="https://countryhigh.ch/en/policies/legal-notice">{{ leg_imp }}</a>
     </div>
     <p class="ch-footer__copy">© 2026 COUNTRY HIGH · Made with love, for dancers.</p>
   </div>
@@ -764,11 +1170,11 @@ select.ch-field{appearance:none;-webkit-appearance:none;color:var(--ch-muted);cu
 
   /* ── Testimonial-Carousel ────────────────────────────────── */
   var quotes = [
-    { q:"Ich war sofort begeistert, als ich von eurer Academy gelesen habe – so eine Gelegenheit habe ich lange gesucht. Ihr habt etwas Wunderbares aufgebaut.", n:"— Gabriele Klause, Deutschland" },
-    { q:"Der Aufbau der Videos ist super. Man muss nicht immer zurückgehen, weil oft genug wiederholt und von Beginn an getanzt wird. Die Abfolge der Videos ist perfekt. Vielen Dank!", n:"— Thekla Luth, Deutschland" },
-    { q:"Wir haben Aurélie bei euch an der Country High Dance Academy gelernt und freuen uns riesig, dass wir diese wunderschöne Choreografie schon tanzen und weitergeben können.", n:"— Andreas & Ulrike Gort, Schweiz" },
-    { q:"Guten Morgen und ein grosses Kompliment für dieses Angebot!", n:"— Salvatore Avellino, Italien" },
-    { q:"Das war eine grossartige Session, vielen Dank!", n:"— Alison Thomson" }
+    { q: {{ q1 | json }}, n: {{ qn1 | json }} },
+    { q: {{ q2 | json }}, n: {{ qn2 | json }} },
+    { q: {{ q3 | json }}, n: {{ qn3 | json }} },
+    { q: {{ q4 | json }}, n: {{ qn4 | json }} },
+    { q: {{ q5 | json }}, n: {{ qn5 | json }} }
   ];
   var i = 0, timer = null;
   var elQ = document.getElementById('chQuote'),
